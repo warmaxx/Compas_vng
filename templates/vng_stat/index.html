@@ -2,9 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ИС ГАСТРОЛЁР | Статистика ТЭК</title>
+    <title>ИС ГАСТРОЛЁР | Статистика ТЭК | СПИСОК ПРОВЕРОК</title>
 </head>
 <body>
-<h1>ИС ГАСТРОЛЁР | Статистика ТЭК</h1>
+<h1>ИС ГАСТРОЛЁР | Статистика ТЭК | СПИСОК ПРОВЕРОК</h1>
+
+<ul>
+    <li>
+        <a href="/">Главная</a>
+    </li>
+    <li>
+        <a href="{% url 'vng_stat:index' %}">СПИСОК ПРОВЕРОК</a>
+    </li>
+    <li>
+        <a href="{% url 'vng_stat:stat' %}">СТАТИСТИКА ПРОВЕРОК</a>
+    </li>
+</ul>
+
+
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>
+                    Округ
+                </th>
+                <th>
+                    Область
+                </th>
+                <th>
+                    №
+                </th>
+                <th>
+                    Наименование
+                </th>
+                <th>
+                    Место нахождения
+                </th>
+                <th>
+                    Категория опасности
+                </th>
+                <th>
+                    Дата окончания последней проверки
+                </th>
+                <th>
+                    Дата начала проведения планируемой проверки
+                </th>
+                <th>
+                    Срок проведения проверки (рабочих дней)
+                </th>
+                <th>
+                    Форма проведения проверки (документарная, выездная)
+                </th>
+                <th>
+                    Цель проведения проверки
+                </th>
+                <th>
+                    Основание проведения проверки
+                </th>
+                <th>
+                    Наименование юридического лица или фамилия, имя, отчество физического лица, владеющих объектом ТЭК на праве собственности или ином законном праве
+                </th>
+                <th>
+                    Место нахождения
+                </th>
+                <th>
+                    Основной государственный регистрационный номер (ОГРН)
+                </th>
+                <th>
+                    Идентификационный номер налогоплательщика (ИНН)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in checks %}
+            <tr>
+                <td>
+                    {{c.tek_Object.region.fedname.name}}
+                </td>
+                <td>
+                    {{c.tek_Object.region.name}}
+                </td>
+                <td>
+                    {{c.id}}
+                </td>
+                <td>
+                    {{ c.tek_Object.name }}
+                </td>
+                <td>
+                    {{ c.tek_Object.place }}
+                </td>
+                <td>
+                    {{c.tek_Object.category.name}}
+                </td>
+                <td>
+                    {{c.date_latest_check}}
+                </td>
+                <td>
+                    {{c.date_next_check}}
+                </td>
+                <td>
+                    {{c.duration}}
+                </td>
+                <td>
+                    {{c.form.name}}
+                </td>
+                <td>
+                    {{c.target_link}}
+                </td>
+                <td>
+                    {{c.target_text}}
+                </td>
+                <td>
+                    {{c.tek_Object.ul.name}}
+                </td>
+                <td>
+                    {{c.tek_Object.ul.place}}
+                </td>
+                <td>
+                    {{c.tek_Object.ul.OGRN}}
+                </td>
+                <td>
+                    {{c.tek_Object.ul.INN}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

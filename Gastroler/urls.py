@@ -17,9 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from homepage import views
 
-
+app_name = 'homepage'
 urlpatterns = [
-    path('', views.index),
-    path('vng_stat/', include('vng_stat.urls')),
-    path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
+    path('vng_stat/', include('vng_stat.urls'), name='vng_stat'),
+    path('admin/', admin.site.urls, name='admin'),
 ]
