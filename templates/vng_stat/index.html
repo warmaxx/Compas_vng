@@ -77,22 +77,22 @@
             {% for c in checks %}
             <tr>
                 <td>
-                    {{c.tek_Object.region.fedname.name}}
+                    {{ c.tek_Object__region__fedname }}
                 </td>
                 <td>
-                    {{c.tek_Object.region.name}}
+                    {{ c.tek_Object__region__name }}
                 </td>
                 <td>
-                    {{c.id}}
+                    {{ c.id }}
                 </td>
                 <td>
-                    {{ c.tek_Object.name }}
+                    {{ c.tek_Object__name }}
                 </td>
                 <td>
-                    {{ c.tek_Object.place }}
+                    {{ c.tek_Object__place }}
                 </td>
                 <td>
-                    {{c.tek_Object.category.name}}
+                    {{c.tek_Object__category__name}}
                 </td>
                 <td>
                     {{c.date_latest_check}}
@@ -104,7 +104,7 @@
                     {{c.duration}}
                 </td>
                 <td>
-                    {{c.form.name}}
+                    {{c.form__name}}
                 </td>
                 <td>
                     {{c.target_link}}
@@ -113,16 +113,16 @@
                     {{c.target_text}}
                 </td>
                 <td>
-                    {{c.tek_Object.ul.name}}
+                    {{c.tek_Object__ul__name}}
                 </td>
                 <td>
-                    {{c.tek_Object.ul.place}}
+                    {{c.tek_Object__ul__place}}
                 </td>
                 <td>
-                    {{c.tek_Object.ul.OGRN}}
+                    {{c.tek_Object__ul__OGRN}}
                 </td>
                 <td>
-                    {{c.tek_Object.ul.INN}}
+                    {{c.tek_Object__ul__INN}}
                 </td>
             </tr>
             {% endfor %}
