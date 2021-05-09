@@ -6,6 +6,19 @@ from django.core.files.storage import FileSystemStorage
 import pylightxl as xl
 import os
 
+month = {'Январь': 1,
+         'Февраль': 2,
+         'Март': 3,
+         'Апрель': 4,
+         'Май': 5,
+         'Июнь': 6,
+         'Июль': 7,
+         'Август': 8,
+         'Сентябрь': 9,
+         'Октябрь': 10,
+         'Ноябрь': 11,
+         'Декабрь': 12
+         }
 
 def upload(request):
     upload_file = ''
@@ -27,23 +40,23 @@ def upload(request):
                 for row in db.ws(db.ws_names[0]).rows:
                     if row[16] != 'ul_inn':
                         # print(row[16])
-                        print(Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count())
+                        # print(Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count())
                         # Проверка наличия ЮЛ
                         if Ul.objects.filter(INN=row[16]).count() == 0:
-                            print('add', row[16])
+                            # print('add', row[16])
                             # Добавление ЮЛ
                             ul = Ul.objects.create(name=row[13], place=row[14], OGRN=row[15], INN=row[16])
-                            print('add UL', ul.id)
+                            # print('add UL', ul.id)
 
                         # Проверка наличия объекта
                         if Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count() == 0:
-                            print('add TEK', row[3], row[4])
+                            # print('add TEK', row[3], row[4])
                             ul_id = Ul.objects.get(INN=row[16]).id
-                            print(ul_id)
-                            category_id = Category.objects.get(name=row[5]).id
-                            print(category_id)
+                            # print(ul_id)
+                            category_id = Category.objects.get(name=row[5].title()).id
+                            # print(category_id)
                             region_id = Region.objects.get(name=row[1]).id
-                            print(region_id)
+                            # print(region_id)
                             # Добавление объекта
                             tek = Tek_Object.objects.create(name=row[3],
                                                             place=row[4],
@@ -51,31 +64,36 @@ def upload(request):
                                                             category_id=category_id,
                                                             region_id=region_id
                                                             )
-                            print('add TEK', tek.id)
+                            # print('add TEK', tek.id)
 
 
                         tek_object_id = Tek_Object.objects.get(name=row[3], place=row[4], ul__INN=row[16]).id
-                        print(tek_object_id)
-                        form_id = Form.objects.get(name=row[10]).id
-                        print(form_id)
+                        print('tek_object_id',tek_object_id)
+                        form_id = Form.objects.get(name=row[10].title()).id
+                        print('form_id',form_id)
                         date_latest_check = None
-                        if row[6] == 'Проверка не проводилась':
+                        if row[6].strip() == 'Проверка не проводилась':
                             date_latest_check = None
-                        if row[6] != 'Проверка не проводилась':
-                            date_latest_check = row[6]
-                        print(date_latest_check)
+                        if row[6].strip() != 'Проверка не проводилась':
+                            date_latest_check = datetime.datetime.strptime(row[6], "%Y/%m/%d")
+                        print('date_latest_check',date_latest_check)
                         # Добавить перевод месяца в нужный формат
-                        # date_next_check = datetime.date(int(datetime.date.today().year), row[8], 1)
-                        # print(date_next_check)
+                        d_year = int(datetime.date.today().year)
+                        print('d_year', d_year)
+                        d_month = int(month[row[8]])
+                        print('d_month',d_month)
+                        date_next_check = datetime.date(d_year, d_month, 1)
+                        print(date_next_check)
                         # Добавление проверки
-                        # check = Check.objects.create(tek_Object_id=tek_object_id,
-                        #                              date_latest_check=date_latest_check,
-                        #                              date_next_check=date_next_check,
-                        #                              duration=row[9],
-                        #                              form_id=form_id,
-                        #                              target_text=row[11],
-                        #                              target_link=row[12]
-                        #                              )
+                        check = Check.objects.create(tek_Object_id=tek_object_id,
+                                                     date_latest_check=date_latest_check,
+                                                     date_next_check=date_next_check,
+                                                     duration=row[9],
+                                                     form_id=form_id,
+                                                     target_text=row[11].strip(),
+                                                     target_link=row[12].strip()
+                                                     )
+                        print('add check id=',check.id)
             except Exception as e:
                 print(e)
             success = True
