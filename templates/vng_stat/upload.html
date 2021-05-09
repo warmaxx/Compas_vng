@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ИС ГАСТРОЛЁР | Статистика ТЭК | Загрузка списка проверок</title>
+</head>
+<body>
+<h1>ИС ГАСТРОЛЁР | Статистика ТЭК | Загрузка списка проверок</h1>
+
+<ul>
+    <li>
+        <a href="/">Главная</a>
+    </li>
+    <li>
+        <a href="{% url 'vng_stat:index' %}">СПИСОК ПРОВЕРОК</a>
+    </li>
+    <li>
+        <a href="{% url 'vng_stat:upload' %}">Загрузить список проверок</a>
+    </li>
+    <li>
+        <a href="{% url 'vng_stat:stat' %}">СТАТИСТИКА ПРОВЕРОК</a>
+    </li>
+</ul>
+
+<p>
+    {% if success %}
+        Файл успешно загружен
+    {% endif %}
+    {% if error %}
+        Произошла ошибка {{ error }}
+    {% endif %}
+</p>
+
+<form method="post" action="{% url 'vng_stat:upload' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="upload_file">
+    <input type="submit" name="Загрузить">
+</form>
+</body>
+</html>

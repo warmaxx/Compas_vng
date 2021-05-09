@@ -1,7 +1,95 @@
 from django.shortcuts import render
 from homepage.models import FedRegion, Region
-from .models import Check
+from .models import Check, Ul, Tek_Object, Category, Form
 import datetime
+from django.core.files.storage import FileSystemStorage
+import pylightxl as xl
+import os
+
+
+def upload(request):
+    upload_file = ''
+    success = False
+    error = False
+
+    try:
+        if request.method == 'POST' and request.FILES['upload_file']:
+            myfile = request.FILES['upload_file']
+
+            location = 'vng_stat/xls/'
+            fs = FileSystemStorage(location=location)
+            filename = fs.save(myfile.name, myfile)
+            uploaded_file_url = fs.url(filename)
+
+            try:
+
+                db = xl.readxl(location + uploaded_file_url)
+                for row in db.ws(db.ws_names[0]).rows:
+                    if row[16] != 'ul_inn':
+                        # print(row[16])
+                        print(Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count())
+                        # Проверка наличия ЮЛ
+                        if Ul.objects.filter(INN=row[16]).count() == 0:
+                            print('add', row[16])
+                            # Добавление ЮЛ
+                            ul = Ul.objects.create(name=row[13], place=row[14], OGRN=row[15], INN=row[16])
+                            print('add UL', ul.id)
+
+                        # Проверка наличия объекта
+                        if Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count() == 0:
+                            print('add TEK', row[3], row[4])
+                            ul_id = Ul.objects.get(INN=row[16]).id
+                            print(ul_id)
+                            category_id = Category.objects.get(name=row[5]).id
+                            print(category_id)
+                            region_id = Region.objects.get(name=row[1]).id
+                            print(region_id)
+                            # Добавление объекта
+                            tek = Tek_Object.objects.create(name=row[3],
+                                                            place=row[4],
+                                                            ul_id=ul_id,
+                                                            category_id=category_id,
+                                                            region_id=region_id
+                                                            )
+                            print('add TEK', tek.id)
+
+
+                        tek_object_id = Tek_Object.objects.get(name=row[3], place=row[4], ul__INN=row[16]).id
+                        print(tek_object_id)
+                        form_id = Form.objects.get(name=row[10]).id
+                        print(form_id)
+                        date_latest_check = None
+                        if row[6] == 'Проверка не проводилась':
+                            date_latest_check = None
+                        if row[6] != 'Проверка не проводилась':
+                            date_latest_check = row[6]
+                        print(date_latest_check)
+                        # Добавить перевод месяца в нужный формат
+                        # date_next_check = datetime.date(int(datetime.date.today().year), row[8], 1)
+                        # print(date_next_check)
+                        # Добавление проверки
+                        # check = Check.objects.create(tek_Object_id=tek_object_id,
+                        #                              date_latest_check=date_latest_check,
+                        #                              date_next_check=date_next_check,
+                        #                              duration=row[9],
+                        #                              form_id=form_id,
+                        #                              target_text=row[11],
+                        #                              target_link=row[12]
+                        #                              )
+            except Exception as e:
+                print(e)
+            success = True
+
+    except Exception as e:
+        success = False
+        print(e)
+
+    context = {
+        'upload_file': upload_file,
+        'success': success,
+        'error': error,
+    }
+    return render(request, 'vng_stat/upload.html', context)
 
 
 def index(request):
