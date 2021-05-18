@@ -24,6 +24,10 @@ def upload(request):
     upload_file = ''
     success = False
     error = False
+    error_list = []
+    ul_count = 0
+    tek_obj_count = 0
+    check_count = 0
 
     try:
         if request.method == 'POST' and request.FILES['upload_file']:
@@ -34,68 +38,83 @@ def upload(request):
             filename = fs.save(myfile.name, myfile)
             uploaded_file_url = fs.url(filename)
 
+
             try:
 
                 db = xl.readxl(location + uploaded_file_url)
                 for row in db.ws(db.ws_names[0]).rows:
-                    if row[16] != 'ul_inn':
+                    if str(row[16]).strip() != 'ul_inn':
                         # print(row[16])
-                        # print(Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count())
+                        # print(Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=str(row[16]).strip()).count())
                         # Проверка наличия ЮЛ
-                        if Ul.objects.filter(INN=row[16]).count() == 0:
+                        if Ul.objects.filter(INN=str(row[16]).strip()).count() == 0:
                             # print('add', row[16])
                             # Добавление ЮЛ
-                            ul = Ul.objects.create(name=row[13], place=row[14], OGRN=row[15], INN=row[16])
+                            if len(str(row[15]).strip()) != 13:
+                                error_list.append('Ошибка в номере ОГРН в строке' + str(row))
+                                continue
+                            if len((str(row[16])).strip()) != 10:
+                                error_list.append('Ошибка в номере ИНН в строке' + str(row))
+                                continue
+                            else:
+                                ul = Ul.objects.create(name=row[13].strip(),
+                                                       place=row[14].strip(),
+                                                       OGRN=str(row[15]).strip(),
+                                                       INN=str(row[16]).strip()
+                                                       )
+                                ul_count += 1
                             # print('add UL', ul.id)
 
                         # Проверка наличия объекта
-                        if Tek_Object.objects.filter(name=row[3]).filter(place=row[4]).filter(ul__INN=row[16]).count() == 0:
+                        if Tek_Object.objects.filter(name=str(row[3]).strip()).filter(place=str(row[4]).strip()).filter(ul__INN=str(row[16]).strip()).count() == 0:
                             # print('add TEK', row[3], row[4])
-                            ul_id = Ul.objects.get(INN=row[16]).id
-                            # print(ul_id)
-                            category_id = Category.objects.get(name=row[5].title()).id
+                            ul_id = Ul.objects.get(INN=str(row[16]).strip()).id
+                            # print(row, ul_id)
+                            category_id = Category.objects.get(name=str(row[5]).strip().title()).id
                             # print(category_id)
-                            region_id = Region.objects.get(name=row[1]).id
+                            region_id = Region.objects.get(name=str(row[1]).strip()).id
                             # print(region_id)
                             # Добавление объекта
-                            tek = Tek_Object.objects.create(name=row[3],
-                                                            place=row[4],
+                            tek = Tek_Object.objects.create(name=str(row[3]).strip(),
+                                                            place=str(row[4]).strip(),
                                                             ul_id=ul_id,
                                                             category_id=category_id,
                                                             region_id=region_id
                                                             )
                             # print('add TEK', tek.id)
+                            tek_obj_count += 1
 
 
-                        tek_object_id = Tek_Object.objects.get(name=row[3], place=row[4], ul__INN=row[16]).id
-                        print('tek_object_id',tek_object_id)
-                        form_id = Form.objects.get(name=row[10].title()).id
-                        print('form_id',form_id)
+                        tek_object_id = Tek_Object.objects.get(name=str(row[3]).strip(), place=str(row[4]).strip(), ul__INN=str(row[16]).strip()).id
+                        # print('tek_object_id',tek_object_id)
+                        form_id = Form.objects.get(name=str(row[10]).strip().title()).id
+                        # print('form_id',form_id)
                         date_latest_check = None
-                        if row[6].strip() == 'Проверка не проводилась':
+                        if str(row[6]).strip() == 'Проверка не проводилась':
                             date_latest_check = None
-                        if row[6].strip() != 'Проверка не проводилась':
+                        if str(row[6]).strip() != 'Проверка не проводилась':
                             date_latest_check = datetime.datetime.strptime(row[6], "%Y/%m/%d")
-                        print('date_latest_check',date_latest_check)
+                        # print('date_latest_check',date_latest_check)
                         # Добавить перевод месяца в нужный формат
                         d_year = int(datetime.date.today().year)
-                        print('d_year', d_year)
-                        d_month = int(month[row[8]])
-                        print('d_month',d_month)
+                        # print('d_year', d_year)
+                        d_month = int(month[str(row[8]).strip()])
+                        # print('d_month', d_month)
                         date_next_check = datetime.date(d_year, d_month, 1)
-                        print(date_next_check)
+                        # print(date_next_check)
                         # Добавление проверки
                         check = Check.objects.create(tek_Object_id=tek_object_id,
                                                      date_latest_check=date_latest_check,
                                                      date_next_check=date_next_check,
                                                      duration=row[9],
                                                      form_id=form_id,
-                                                     target_text=row[11].strip(),
-                                                     target_link=row[12].strip()
+                                                     target_text=str(row[11]).strip(),
+                                                     target_link=str(row[12]).strip()
                                                      )
-                        print('add check id=',check.id)
+                        # print('add check id=',check.id)
+                        check_count += 1
             except Exception as e:
-                print(e)
+                print(row, e)
             success = True
 
     except Exception as e:
@@ -105,7 +124,12 @@ def upload(request):
     context = {
         'upload_file': upload_file,
         'success': success,
+        'ul_count': ul_count,
+        'tek_obj_count': tek_obj_count,
+        'check_count': check_count,
         'error': error,
+        'error_list': error_list,
+        'len_error_list': len(error_list),
     }
     return render(request, 'vng_stat/upload.html', context)
 
@@ -113,7 +137,7 @@ def upload(request):
 def index(request):
     checks = Check.objects.all().values(
         'tek_Object__region__name',
-        'tek_Object__region__fedname',
+        'tek_Object__region__fedname__name',
         'id',
         'tek_Object__name',
         'tek_Object__place',
@@ -131,7 +155,6 @@ def index(request):
     )
 
     context = {
-
         'checks': checks,
     }
 
