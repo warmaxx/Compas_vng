@@ -136,12 +136,12 @@ var KTDatatableChildRemoteDataDemo = function() {
 					{
 						field: 'job',
 						title: 'Должность',
-						width: 66,
+						width: 70,
 					},
 					{
 						field: 'rank',
 						title: 'Звание',
-						width: 44,
+						width: 50,
 
 					},
 					{
@@ -162,6 +162,9 @@ var KTDatatableChildRemoteDataDemo = function() {
 						field: 'email',
 						title: 'email',
 						width: 160,
+						template: function (row){
+							return '<a href="mailto:'+row.email+'">'+row.email+'</a>'
+						}
 
 					},
 
