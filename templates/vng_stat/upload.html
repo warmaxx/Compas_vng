@@ -15,27 +15,27 @@ License: You must have a valid license purchased only from themeforest(the above
 <html lang="en">
 <!--begin::Head-->
 <head>
-    <base href="../../../">
-    <meta charset="utf-8"/>
-    <title>ИС Гастролёр</title>
-    <meta name="description" content="Scrollable datatables examples"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    {#		<link rel="canonical" href="https://keenthemes.com/metronic" />#}
-    <!--begin::Fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
-    <!--end::Fonts-->
-    <!--begin::Page Vendors Styles(used by this page)-->
-    <link href="{% static 'assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
-          type="text/css"/>
-    <!--end::Page Vendors Styles-->
-    <!--begin::Global Theme Styles(used by all pages)-->
-    <link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css"/>
-    <link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
-    <!--end::Global Theme Styles-->
-    <!--begin::Layout Themes(used by all pages)-->
-    <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="{% static 'assets/media/logos/favicon.ico' %}"/>
+  <base href="../../../">
+  <meta charset="utf-8"/>
+  <title>ИС Гастролёр</title>
+  <meta name="description" content="Scrollable datatables examples"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  {#		<link rel="canonical" href="https://keenthemes.com/metronic" />#}
+  <!--begin::Fonts-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"/>
+  <!--end::Fonts-->
+  <!--begin::Page Vendors Styles(used by this page)-->
+  <link href="{% static 'assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
+  <!--end::Page Vendors Styles-->
+  <!--begin::Global Theme Styles(used by all pages)-->
+  <link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  <link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
+  <!--end::Global Theme Styles-->
+  <!--begin::Layout Themes(used by all pages)-->
+  <!--end::Layout Themes-->
+  <link rel="shortcut icon" href="{% static 'assets/media/logos/favicon.ico' %}"/>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -44,308 +44,321 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--begin::Main-->
 <!--begin::Header Mobile-->
 <div id="kt_header_mobile" class="header-mobile">
-    <!--begin::Logo-->
-    <a href="/">
-        <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}" class="logo-default max-h-30px"/>
-    </a>
-    <!--end::Logo-->
-    <!--begin::Toolbar-->
-    <div class="d-flex align-items-center">
-        <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
-            <span></span>
-        </button>
-        <button class="btn btn-icon btn-hover-transparent-white p-0 ml-3" id="kt_header_mobile_topbar_toggle">
+  <!--begin::Logo-->
+  <a href="{% url 'index' %}">
+    <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}" class="logo-default max-h-30px"/>
+  </a>
+  <!--end::Logo-->
+  <!--begin::Toolbar-->
+  <div class="d-flex align-items-center">
+    <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
+      <span></span>
+    </button>
+    <button class="btn btn-icon btn-hover-transparent-white p-0 ml-3" id="kt_header_mobile_topbar_toggle">
 					<span class="svg-icon svg-icon-xl">
 						<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                             height="24px" viewBox="0 0 24 24" version="1.1">
+                 height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<polygon points="0 0 24 0 24 24 0 24"/>
 								<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
-                                      fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                      fill="#000000" fill-rule="nonzero" opacity="0.3"/>
 								<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
-                                      fill="#000000" fill-rule="nonzero"/>
+                      fill="#000000" fill-rule="nonzero"/>
 							</g>
 						</svg>
-                        <!--end::Svg Icon-->
+            <!--end::Svg Icon-->
 					</span>
-        </button>
-    </div>
-    <!--end::Toolbar-->
+    </button>
+  </div>
+  <!--end::Toolbar-->
 </div>
 <!--end::Header Mobile-->
 <div class="d-flex flex-column flex-root">
-    <!--begin::Page-->
-    <div class="d-flex flex-row flex-column-fluid page">
-        <!--begin::Wrapper-->
-        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
-            <!--begin::Header-->
-            <div id="kt_header" class="header header-fixed">
-                <!--begin::Container-->
-                <div class="container d-flex align-items-stretch justify-content-between">
-                    <!--begin::Left-->
-                    <div class="d-flex align-items-stretch mr-3">
-                        <!--begin::Header Logo-->
-                        <div class="header-logo">
-                            <a href="/">
-                                <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-9.png' %}"
-                                     class="logo-default max-h-40px"/>
-                                <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}"
-                                     class="logo-sticky max-h-40px"/>
-                            </a>
-                        </div>
-                        <!--end::Header Logo-->
-                        <!--begin::Header Menu Wrapper-->
-                        <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
-                            <!--begin::Header Menu-->
-                            <div id="kt_header_menu"
-                                 class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
-
-                            </div>
-                            <!--end::Header Menu-->
-                        </div>
-                        <!--end::Header Menu Wrapper-->
-                    </div>
-                    <!--end::Left-->
-                    <!--begin::Topbar-->
-
-                    <!--end::Topbar-->
-                </div>
-                <!--end::Container-->
+  <!--begin::Page-->
+  <div class="d-flex flex-row flex-column-fluid page">
+    <!--begin::Wrapper-->
+    <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+      <!--begin::Header-->
+      <div id="kt_header" class="header header-fixed">
+        <!--begin::Container-->
+        <div class="container d-flex align-items-stretch justify-content-between">
+          <!--begin::Left-->
+          <div class="d-flex align-items-stretch mr-3">
+            <!--begin::Header Logo-->
+            <div class="header-logo">
+              <a href="{% url 'index' %}">
+                <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-9.png' %}"
+                     class="logo-default max-h-40px"/>
+                <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}"
+                     class="logo-sticky max-h-40px"/>
+              </a>
             </div>
-            <!--end::Header-->
-            <!--begin::Content-->
-            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                <!--begin::Subheader-->
-                <div class="subheader py-2 py-lg-12 subheader-transparent" id="kt_subheader">
-                    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                        <!--begin::Info-->
-                        <div class="d-flex align-items-center flex-wrap mr-1">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-column">
-                                <!--begin::Title-->
-                                <h2 class="text-white font-weight-bold my-2 mr-5">ИС Гастролёр</h2>
-                                <!--end::Title-->
-                                <!--begin::Breadcrumb-->
-                                <div class="d-flex align-items-center font-weight-bold my-2">
-                                    <!--begin::Item-->
+            <!--end::Header Logo-->
+            <!--begin::Header Menu Wrapper-->
+            <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+              <!--begin::Header Menu-->
+              <div id="kt_header_menu"
+                   class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
 
-                                    <!--end::Item-->
-                                </div>
-                                <!--end::Breadcrumb-->
-                            </div>
-                            <!--end::Heading-->
-                        </div>
-                        <!--end::Info-->
-                        <!--begin::Toolbar-->
+              </div>
+              <!--end::Header Menu-->
+            </div>
+            <!--end::Header Menu Wrapper-->
+          </div>
+          <!--end::Left-->
+          <!--begin::Topbar-->
 
-                        <!--end::Toolbar-->
-                    </div>
+          <!--end::Topbar-->
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::Header-->
+      <!--begin::Content-->
+      <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Subheader-->
+        <div class="subheader py-2 py-lg-12 subheader-transparent" id="kt_subheader">
+          <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+              <!--begin::Heading-->
+              <div class="d-flex flex-column">
+                <!--begin::Title-->
+                <h2 class="text-white font-weight-bold my-2 mr-5">ИС Гастролёр</h2>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <div class="d-flex align-items-center font-weight-bold my-2">
+                  <!--begin::Item-->
+                  <a href="{% url 'index' %}" class="opacity-75 hover-opacity-100">
+                    <i class="flaticon2-shelter text-white icon-1x"></i>
+                  </a>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                  <a href="{% url 'index' %}" class="text-white text-hover-white opacity-75 hover-opacity-100">Рабочий
+                    стол</a>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                  <a href="{% url 'vng_stat:upload' %}"
+                     class="text-white text-hover-white opacity-75 hover-opacity-100">Загрузка объектов
+                    ТЭК</a>
+                  <!--end::Item-->
                 </div>
-                <!--end::Subheader-->
-                <!--begin::Entry-->
-                <div class="d-flex flex-column-fluid">
-                    <!--begin::Container-->
-                    <div class="container">
-                        <!--begin::Notice-->
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <!--begin::Nav Panel Widget 1-->
-                                <div class="card card-custom gutter-b">
-                                    <!--begin::Body-->
-                                    <div class="card-body">
-                                        <!--begin::Nav Tabs-->
-                                        <ul class="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row"
-                                            role="tablist">
-                                            <!--begin::Item-->
-                                            <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                                <a class="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                                                   href="{% url 'vng_stat:index' %}">
+                <!--end::Breadcrumb-->
+              </div>
+              <!--end::Heading-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+
+            <!--end::Toolbar-->
+          </div>
+        </div>
+        <!--end::Subheader-->
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+          <!--begin::Container-->
+          <div class="container">
+            <!--begin::Notice-->
+            <div class="row">
+              <div class="col-xl-12">
+                <!--begin::Nav Panel Widget 1-->
+                <div class="card card-custom gutter-b">
+                  <!--begin::Body-->
+                  <div class="card-body">
+                    <!--begin::Nav Tabs-->
+                    <ul class="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row"
+                        role="tablist">
+                      <!--begin::Item-->
+                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                        <a class="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                           href="{% url 'vng_stat:index' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         width="24px" height="24px" viewBox="0 0 24 24"
-                                                                         version="1.1">
+                                       xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       width="24px" height="24px" viewBox="0 0 24 24"
+                                       version="1.1">
 																		<g stroke="none" stroke-width="1" fill="none"
-                                                                           fill-rule="evenodd">
+                                       fill-rule="evenodd">
 																			<rect x="0" y="0" width="24"
-                                                                                  height="24"></rect>
+                                            height="24"></rect>
 																			<path d="M5,3 L6,3 C6.55228475,3 7,3.44771525 7,4 L7,20 C7,20.5522847 6.55228475,21 6,21 L5,21 C4.44771525,21 4,20.5522847 4,20 L4,4 C4,3.44771525 4.44771525,3 5,3 Z M10,3 L11,3 C11.5522847,3 12,3.44771525 12,4 L12,20 C12,20.5522847 11.5522847,21 11,21 L10,21 C9.44771525,21 9,20.5522847 9,20 L9,4 C9,3.44771525 9.44771525,3 10,3 Z"
-                                                                                  fill="#000000"></path>
+                                            fill="#000000"></path>
 																			<rect fill="#000000" opacity="0.3"
-                                                                                  transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)"
-                                                                                  x="16.3255682" y="2.94551858"
-                                                                                  width="3" height="18" rx="1"></rect>
+                                            transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)"
+                                            x="16.3255682" y="2.94551858"
+                                            width="3" height="18" rx="1"></rect>
 																		</g>
 																	</svg>
-                                                                    <!--end::Svg Icon-->
+                                  <!--end::Svg Icon-->
 																</span>
 															</span>
-                                                    <span class="nav-text font-size-lg py-2 font-weight-bold text-center">Список проверок</span>
-                                                </a>
-                                            </li>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                                <a class="nav-link  border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                                                   href="{% url 'vng_stat:stat' %}">
+                          <span class="nav-text font-size-lg py-2 font-weight-bold text-center">Список проверок</span>
+                        </a>
+                      </li>
+                      <!--end::Item-->
+                      <!--begin::Item-->
+                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                        <a class="nav-link  border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                           href="{% url 'vng_stat:stat' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         width="24px" height="24px" viewBox="0 0 24 24"
-                                                                         version="1.1">
+                                       xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       width="24px" height="24px" viewBox="0 0 24 24"
+                                       version="1.1">
 																		<g stroke="none" stroke-width="1" fill="none"
-                                                                           fill-rule="evenodd">
+                                       fill-rule="evenodd">
 																			<rect x="0" y="0" width="24"
-                                                                                  height="24"></rect>
+                                            height="24"></rect>
 																			<rect fill="#000000" x="4" y="4" width="7"
-                                                                                  height="7" rx="1.5"></rect>
+                                            height="7" rx="1.5"></rect>
 																			<path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
-                                                                                  fill="#000000" opacity="0.3"></path>
+                                            fill="#000000" opacity="0.3"></path>
 																		</g>
 																	</svg>
-                                                                    <!--end::Svg Icon-->
+                                  <!--end::Svg Icon-->
 																</span>
 															</span>
-                                                    <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Статистика проверок</span>
-                                                </a>
-                                            </li>
-                                            <!--end::Item-->
-                                            <!--begin::Item-->
-                                            <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                                <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                                                   href="{% url 'vng_stat:upload' %}">
+                          <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Статистика проверок</span>
+                        </a>
+                      </li>
+                      <!--end::Item-->
+                      <!--begin::Item-->
+                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                        <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                           href="{% url 'vng_stat:upload' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Media/Movie-Lane2.svg-->
 																	<svg xmlns="http://www.w3.org/2000/svg"
-                                                                         xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                                         width="24px" height="24px" viewBox="0 0 24 24"
-                                                                         version="1.1">
+                                       xmlns:xlink="http://www.w3.org/1999/xlink"
+                                       width="24px" height="24px" viewBox="0 0 24 24"
+                                       version="1.1">
 																		<g stroke="none" stroke-width="1" fill="none"
-                                                                           fill-rule="evenodd">
+                                       fill-rule="evenodd">
 																			<rect x="0" y="0" width="24"
-                                                                                  height="24"></rect>
+                                            height="24"></rect>
 																			<path d="M6,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,19 C20,20.1045695 19.1045695,21 18,21 L6,21 C4.8954305,21 4,20.1045695 4,19 L4,5 C4,3.8954305 4.8954305,3 6,3 Z M5.5,5 C5.22385763,5 5,5.22385763 5,5.5 L5,6.5 C5,6.77614237 5.22385763,7 5.5,7 L6.5,7 C6.77614237,7 7,6.77614237 7,6.5 L7,5.5 C7,5.22385763 6.77614237,5 6.5,5 L5.5,5 Z M17.5,5 C17.2238576,5 17,5.22385763 17,5.5 L17,6.5 C17,6.77614237 17.2238576,7 17.5,7 L18.5,7 C18.7761424,7 19,6.77614237 19,6.5 L19,5.5 C19,5.22385763 18.7761424,5 18.5,5 L17.5,5 Z M5.5,9 C5.22385763,9 5,9.22385763 5,9.5 L5,10.5 C5,10.7761424 5.22385763,11 5.5,11 L6.5,11 C6.77614237,11 7,10.7761424 7,10.5 L7,9.5 C7,9.22385763 6.77614237,9 6.5,9 L5.5,9 Z M17.5,9 C17.2238576,9 17,9.22385763 17,9.5 L17,10.5 C17,10.7761424 17.2238576,11 17.5,11 L18.5,11 C18.7761424,11 19,10.7761424 19,10.5 L19,9.5 C19,9.22385763 18.7761424,9 18.5,9 L17.5,9 Z M5.5,13 C5.22385763,13 5,13.2238576 5,13.5 L5,14.5 C5,14.7761424 5.22385763,15 5.5,15 L6.5,15 C6.77614237,15 7,14.7761424 7,14.5 L7,13.5 C7,13.2238576 6.77614237,13 6.5,13 L5.5,13 Z M17.5,13 C17.2238576,13 17,13.2238576 17,13.5 L17,14.5 C17,14.7761424 17.2238576,15 17.5,15 L18.5,15 C18.7761424,15 19,14.7761424 19,14.5 L19,13.5 C19,13.2238576 18.7761424,13 18.5,13 L17.5,13 Z M17.5,17 C17.2238576,17 17,17.2238576 17,17.5 L17,18.5 C17,18.7761424 17.2238576,19 17.5,19 L18.5,19 C18.7761424,19 19,18.7761424 19,18.5 L19,17.5 C19,17.2238576 18.7761424,17 18.5,17 L17.5,17 Z M5.5,17 C5.22385763,17 5,17.2238576 5,17.5 L5,18.5 C5,18.7761424 5.22385763,19 5.5,19 L6.5,19 C6.77614237,19 7,18.7761424 7,18.5 L7,17.5 C7,17.2238576 6.77614237,17 6.5,17 L5.5,17 Z"
-                                                                                  fill="#000000" opacity="0.3"></path>
+                                            fill="#000000" opacity="0.3"></path>
 																			<path d="M11.3521577,14.5722612 L13.9568442,12.7918113 C14.1848159,12.6359797 14.2432972,12.3248456 14.0874656,12.0968739 C14.0526941,12.0460053 14.0088196,12.002002 13.9580532,11.9670814 L11.3533667,10.1754041 C11.1258528,10.0189048 10.8145486,10.0764735 10.6580493,10.3039875 C10.6007019,10.3873574 10.5699997,10.4861652 10.5699997,10.5873545 L10.5699997,14.1594818 C10.5699997,14.4356241 10.7938573,14.6594818 11.0699997,14.6594818 C11.1706891,14.6594818 11.2690327,14.6290818 11.3521577,14.5722612 Z"
-                                                                                  fill="#000000"></path>
+                                            fill="#000000"></path>
 																		</g>
 																	</svg>
-                                                                    <!--end::Svg Icon-->
+                                  <!--end::Svg Icon-->
 																</span>
 															</span>
-                                                    <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
-                                                </a>
-                                            </li>
-                                            <!--end::Item-->
+                          <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
+                        </a>
+                      </li>
+                      <!--end::Item-->
 
 
-                                        </ul>
-                                        <!--end::Nav Tabs-->
+                    </ul>
+                    <!--end::Nav Tabs-->
 
-                                    </div>
-                                    <!--end::Body-->
-                                </div>
-                                <!--begin::Nav Panel Widget 1-->
-                            </div>
-                        </div>
-                        <!--end::Notice-->
-                        <!--begin::Card-->
-
-                        <!--end::Card-->
-                        <!--begin::Card-->
-                        <div class="card card-custom">
-                            <div class="card-header">
-                                <h3 class="card-title">
-                                    Загрузка плана проверок ТЭК
-                                </h3>
-                            </div>
-                            <!--begin::Form-->
-                            <form class="form" method="post" action="{% url 'vng_stat:upload' %}" enctype="multipart/form-data">
-                            {% csrf_token %}
-                                <div class="card-body">
-                                    <div class="form-group form-group-last">
-                                        <div class="alert alert-custom alert-default" role="alert">
-                                            <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
-                                            <div class="alert-text">
-                                                <p>
-                                                    {% if success %}
-                                                        Файл успешно загружен <br>
-                                                        Добавлено ЮЛ - {{ ul_count }} <br>
-                                                        Добавлено Объектов ТЭК - {{ tek_obj_count }} <br>
-                                                        Добавлено проверок ТЭК - {{ check_count }} <br>
-                                                        Ошибки [{{ len_error_list }}]:
-                                                        <ul>
-                                                            {% for e in error_list %}
-                                                                <li>{{ e }}</li>
-                                                            {% endfor %}
-                                                        </ul>
-
-                                                    {% endif %}
-                                                {% if error %}
-                                                    Произошла ошибка {{ error }}<br>
-                                                    {{ error_list }}
-                                                {% endif %}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-{#                                        <label>File Browser</label>#}
-                                        <div></div>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customFile" name="upload_file"/>
-                                            <label class="custom-file-label" for="customFile">Выберите файл</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="reset" class="btn btn-primary mr-2">Загрузить</button>
-{#                                    <button type="reset" class="btn btn-secondary">Cancel</button>#}
-                                </div>
-                            </form>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Card-->
-                    </div>
-                    <!--end::Container-->
+                  </div>
+                  <!--end::Body-->
                 </div>
-                <!--end::Entry-->
+                <!--begin::Nav Panel Widget 1-->
+              </div>
             </div>
-            <!--end::Content-->
-            <!--begin::Footer-->
-            <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
-                <!--begin::Container-->
-                <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
-                    <!--begin::Copyright-->
-                    <div class="text-dark order-2 order-md-1">
-                        <span class="text-muted font-weight-bold mr-2">2021©</span>
-                        <a href="http://keenthemes.com/metronic" target="_blank"
-                           class="text-dark-75 text-hover-primary">Keenthemes</a>
+            <!--end::Notice-->
+            <!--begin::Card-->
+
+            <!--end::Card-->
+            <!--begin::Card-->
+            <div class="card card-custom">
+              <div class="card-header">
+                <h3 class="card-title">
+                  Загрузка плана проверок ТЭК
+                </h3>
+              </div>
+              <!--begin::Form-->
+              <form class="form" method="post" action="{% url 'vng_stat:upload' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group form-group-last">
+                    <div class="alert alert-custom alert-default" role="alert">
+                      <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+                      <div class="alert-text">
+                        <p>
+                          {% if success %}
+                            Файл успешно загружен <br>
+                            Добавлено ЮЛ - {{ ul_count }} <br>
+                            Добавлено Объектов ТЭК - {{ tek_obj_count }} <br>
+                            Добавлено проверок ТЭК - {{ check_count }} <br>
+                            Ошибки [{{ len_error_list }}]:
+                            <ul>
+                              {% for e in error_list %}
+                                <li>{{ e }}</li>
+                              {% endfor %}
+                            </ul>
+
+                          {% endif %}
+                        {% if error %}
+                          Произошла ошибка {{ error }}<br>
+                          {{ error_list }}
+                        {% endif %}
+                        </p>
+                      </div>
                     </div>
-                    <!--end::Copyright-->
-                    <!--begin::Nav-->
-                    <div class="nav nav-dark order-1 order-md-2">
-                        <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">About</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link px-3">Team</a>
-                        <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
+                  </div>
+
+
+                  <div class="form-group">
+                    {#                                        <label>File Browser</label>#}
+                    <div></div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="customFile" name="upload_file"/>
+                      <label class="custom-file-label" for="customFile">Выберите файл</label>
                     </div>
-                    <!--end::Nav-->
+                  </div>
                 </div>
-                <!--end::Container-->
+                <div class="card-footer">
+                  <button type="reset" class="btn btn-primary mr-2">Загрузить</button>
+                  {#                                    <button type="reset" class="btn btn-secondary">Cancel</button>#}
+                </div>
+              </form>
+              <!--end::Form-->
             </div>
-            <!--end::Footer-->
+            <!--end::Card-->
+          </div>
+          <!--end::Container-->
         </div>
-        <!--end::Wrapper-->
+        <!--end::Entry-->
+      </div>
+      <!--end::Content-->
+      <!--begin::Footer-->
+      <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+        <!--begin::Container-->
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
+          <!--begin::Copyright-->
+          <div class="text-dark order-2 order-md-1">
+            <span class="text-muted font-weight-bold mr-2">2021©</span>
+            <a href="http://keenthemes.com/metronic" target="_blank"
+               class="text-dark-75 text-hover-primary">Keenthemes</a>
+          </div>
+          <!--end::Copyright-->
+          <!--begin::Nav-->
+          <div class="nav nav-dark order-1 order-md-2">
+            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pr-3 pl-0">About</a>
+            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link px-3">Team</a>
+            <a href="http://keenthemes.com/metronic" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
+          </div>
+          <!--end::Nav-->
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::Footer-->
     </div>
-    <!--end::Page-->
+    <!--end::Wrapper-->
+  </div>
+  <!--end::Page-->
 </div>
 <!--end::Main-->
 <!-- begin::User Panel-->
@@ -362,15 +375,15 @@ License: You must have a valid license purchased only from themeforest(the above
 			<span class="svg-icon">
 				<!--begin::Svg Icon | path:assets/media/svg/icons/Navigation/Up-2.svg-->
 				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                     height="24px" viewBox="0 0 24 24" version="1.1">
+             height="24px" viewBox="0 0 24 24" version="1.1">
 					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 						<polygon points="0 0 24 0 24 24 0 24"/>
 						<rect fill="#000000" opacity="0.3" x="11" y="10" width="2" height="10" rx="1"/>
 						<path d="M6.70710678,12.7071068 C6.31658249,13.0976311 5.68341751,13.0976311 5.29289322,12.7071068 C4.90236893,12.3165825 4.90236893,11.6834175 5.29289322,11.2928932 L11.2928932,5.29289322 C11.6714722,4.91431428 12.2810586,4.90106866 12.6757246,5.26284586 L18.6757246,10.7628459 C19.0828436,11.1360383 19.1103465,11.7686056 18.7371541,12.1757246 C18.3639617,12.5828436 17.7313944,12.6103465 17.3242754,12.2371541 L12.0300757,7.38413782 L6.70710678,12.7071068 Z"
-                              fill="#000000" fill-rule="nonzero"/>
+                  fill="#000000" fill-rule="nonzero"/>
 					</g>
 				</svg>
-                <!--end::Svg Icon-->
+        <!--end::Svg Icon-->
 			</span>
 </div>
 <!--end::Scrolltop-->

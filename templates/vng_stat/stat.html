@@ -45,7 +45,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--begin::Header Mobile-->
 <div id="kt_header_mobile" class="header-mobile">
     <!--begin::Logo-->
-    <a href="/">
+    <a href="{% url 'index' %}">
         <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}" class="logo-default max-h-30px"/>
     </a>
     <!--end::Logo-->
@@ -87,7 +87,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="d-flex align-items-stretch mr-3">
                         <!--begin::Header Logo-->
                         <div class="header-logo">
-                            <a href="/">
+                            <a href="{% url 'index' %}">
                                 <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-9.png' %}"
                                      class="logo-default max-h-40px"/>
                                 <img alt="Logo" src="{% static 'assets/media/logos/logo-letter-1.png' %}"
@@ -126,12 +126,23 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <!--begin::Title-->
                                 <h2 class="text-white font-weight-bold my-2 mr-5">ИС Гастролёр</h2>
                                 <!--end::Title-->
-                                <!--begin::Breadcrumb-->
                                 <div class="d-flex align-items-center font-weight-bold my-2">
-                                    <!--begin::Item-->
-
-                                    <!--end::Item-->
-                                </div>
+                  <!--begin::Item-->
+                  <a href="{% url 'index' %}" class="opacity-75 hover-opacity-100">
+                    <i class="flaticon2-shelter text-white icon-1x"></i>
+                  </a>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                  <a href="{% url 'index' %}" class="text-white text-hover-white opacity-75 hover-opacity-100">Рабочий
+                    стол</a>
+                  <!--end::Item-->
+                  <!--begin::Item-->
+                  <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                  <a href="{% url 'vng_stat:stat' %}" class="text-white text-hover-white opacity-75 hover-opacity-100">Статистика
+                    ТЭК</a>
+                  <!--end::Item-->
+                </div>
                                 <!--end::Breadcrumb-->
                             </div>
                             <!--end::Heading-->
