@@ -66,7 +66,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 					title: 'Время',
 					template: function (row){
 									var Data = new Date();
-									var Hour = Data.getUTCHours() + row.time;
+									var Hour = (Data.getUTCHours() + row.time) % 24;
 									var Minutes = ('0'+Data.getUTCMinutes()).slice(-2);
 
 									return (Hour + ":" + Minutes);
@@ -171,7 +171,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 						width: 42,
 						template: function (row){
 									var Data = new Date();
-									var Hour = Data.getUTCHours() + row.time;
+									var Hour = (Data.getUTCHours() + row.time) % 24;
 									var Minutes = ('0'+Data.getUTCMinutes()).slice(-2);
 
 									return (Hour + ":" + Minutes);
