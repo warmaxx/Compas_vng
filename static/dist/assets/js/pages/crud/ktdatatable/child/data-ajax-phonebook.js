@@ -31,7 +31,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 			// column sorting
 			sortable: true,
 
-			pagination: true,
+			pagination: false,
 
 			detail: {
 				title: 'Просмотр сотрудников',
@@ -64,12 +64,24 @@ var KTDatatableChildRemoteDataDemo = function() {
 				}, {
 					field: 'time',
 					title: 'Время',
+					width: 50,
+					textAlign: 'center',
 					template: function (row){
 									var Data = new Date();
 									var Hour = (Data.getUTCHours() + row.time) % 24;
 									var Minutes = ('0'+Data.getUTCMinutes()).slice(-2);
 
 									return (Hour + ":" + Minutes);
+					},
+				},
+				{
+					field: 'Actions',
+					title: 'Действия',
+					sortable: false,
+					width: 90,
+					textAlign: 'center',
+					template: function (row){
+									return '<a href="mailto:'+row.emails+'"><i class="fas fa-mail-bulk icon-lg" title="Написать всем"></i></a>';
 					},
 				},
 				],
@@ -123,7 +135,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 				},
 
 				sortable: true,
-				pagination: true,
+
 
 				// columns definition
 				columns: [

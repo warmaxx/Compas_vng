@@ -57,6 +57,12 @@ def deps(request, *args, **kwargs):
         jdata['region_name'] = depart.region.name
         jdata['address'] = depart.address
         jdata['time'] = depart.region.timezone
+        delim = ";"
+        jdata['emails'] = ''
+        email_list = list(Contact.objects.filter(departament=depart).values_list('email', flat=True))
+        for email in email_list:
+            jdata['emails'] = jdata['emails'] + str(email) + delim
+        # jdata['emails'] = list(Contact.objects.filter(departament=depart).values_list('email', flat=True))
         j.append(jdata)
     jdeps['meta'] = meta_data
     jdeps['data'] = j
