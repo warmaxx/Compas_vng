@@ -205,6 +205,8 @@ var KTDatatableChildRemoteDataDemo = function() {
 								4: {'title': 'Отпуск', 'class': 'btn-success'},
 								5: {'title': 'Декрет', 'class': 'btn-info'},
 								6: {'title': 'Уволен', 'class': 'btn-danger'},
+								7: {'title': 'Пенсия', 'class': 'btn-secondary'},
+								8: {'title': 'Переведен', 'class': 'btn-secondary'},
 							};
 							return '<div class="dropdown">\n' +
 								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
@@ -218,6 +220,8 @@ var KTDatatableChildRemoteDataDemo = function() {
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/4/">Отпуск</a>\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/5/">Декрет</a>\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/6/">Уволен</a>\n' +
+								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/7/">Пенсия</a>\n' +
+								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/8/">Переведен</a>\n' +
 								'    </div>\n' +
 
 								'</div>';

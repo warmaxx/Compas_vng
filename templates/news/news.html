@@ -1,0 +1,68 @@
+<div class="card card-custom bg-primary-o-80" id="kt_page_stretched_card">
+  <div class="card-header border-0">
+    <div class="card-title">
+       <span class="card-icon">
+                <i class="flaticon2-chat-1 text-white"></i>
+            </span>
+      <h3 class="card-label text-white">Новости
+        {#        <small>full height card with scrollable content</small>#}
+      </h3>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-scroll">
+      <!-- News Item -->
+      {% for new in news %}
+        <div class="card card-custom gutter-b">
+          <div class="card-header">
+            <div class="card-title">
+              <h3 class="card-label">
+                {{ new.title }}
+                <small>{{ new.date_create }}</small>
+              </h3>
+            </div>
+          </div>
+          <!--begin::Body-->
+          <div class="card-body">
+            <!--begin::Top-->
+
+            <!--end::Top-->
+            <!--begin::Bottom-->
+            <div class="pt-1">
+              <!--begin::Image-->
+              {% if new.image %}
+                <div class="bgi-no-repeat bgi-size-cover rounded min-h-265px"
+                     style="background-image: url({{ new.image.url }})"></div>
+              {% endif %}
+              <!--end::Image-->
+              <!--begin::Text-->
+              <p class="text-dark-75 font-size-lg font-weight-normal pt-5 mb-2">{{ new.text }}</p>
+              <!--end::Text-->
+              <!--begin::Action-->
+              {% if new.doc %}
+                <div class="d-flex align-items-center">
+                  <a href="{{ new.doc.url }}" target="_blank"
+                     class="btn btn-hover-text-primary btn-hover-icon-primary btn-sm btn-text-dark-50 bg-hover-light-primary rounded font-weight-bolder font-size-sm p-2">
+                    <i class="flaticon-file-2 text-success"></i>
+
+                    </span>Скачать документ</a>
+
+                </div>
+              {% endif %}
+              <!--end::Action-->
+            </div>
+            <!--end::Bottom-->
+            <!--begin::Separator-->
+
+            <!--end::Separator-->
+            <!--begin::Editor-->
+
+            <!--edit::Editor-->
+          </div>
+          <!--end::Body-->
+        </div>
+      {% endfor %}
+      <!-- End News Item -->
+    </div>
+  </div>
+</div>
