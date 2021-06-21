@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from homepage import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'homepage'
 urlpatterns = [
@@ -25,3 +27,4 @@ urlpatterns = [
     path('phonebook/', include('phonebook.urls'), name='phonebook'),
     path('admin/', admin.site.urls, name='admin'),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
