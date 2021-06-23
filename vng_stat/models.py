@@ -42,9 +42,9 @@ class Form(models.Model):
 class Tek_Object(models.Model):
     name = models.CharField('Название объекта', max_length=1000)
     place = models.CharField('Местонахождение объекта', max_length=1000)
-    ul = models.ForeignKey(Ul, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.PROTECT)
-    region = models.ForeignKey(Region, on_delete=models.PROTECT)
+    ul = models.ForeignKey(Ul, on_delete=models.CASCADE, verbose_name='Юридическое лицо')
+    category = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name='Категория')
+    region = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
 
     def __str__(self):
         return self.name
@@ -55,11 +55,11 @@ class Tek_Object(models.Model):
 
 
 class Check(models.Model):
-    tek_Object = models.ForeignKey(Tek_Object, on_delete=models.CASCADE)
+    tek_Object = models.ForeignKey(Tek_Object, on_delete=models.CASCADE, verbose_name='Объект ТЭК')
     date_latest_check = models.DateField('Дата окончания последней проверки', blank=True)
     date_next_check = models.DateField('Дата начала проведения следующей проверки')
     duration = models.IntegerField('Срок проведения проверки (Рабочих дней)')
-    form = models.ForeignKey(Form, on_delete=models.PROTECT)
+    form = models.ForeignKey(Form, on_delete=models.PROTECT, verbose_name='Форма проверки')
     target_text = models.TextField('Цель проведения проверки',
                                    default='Федеральный государственный контроль (надзор) за обеспечением безопасности объектов топливно-энергетического комплекса')
     target_link = models.TextField('Основание проведения проверки',

@@ -14,7 +14,7 @@ class FedRegion(models.Model):
 
 class Region(models.Model):
     name = models.CharField('Название категории объекта', max_length=100)
-    fedname = models.ForeignKey(FedRegion, on_delete=models.CASCADE)
+    fedname = models.ForeignKey(FedRegion, on_delete=models.CASCADE, verbose_name='Округ')
     timezone = models.IntegerField('Часовой пояс региона GMT', default=0)
 
     def __str__(self):
@@ -53,7 +53,7 @@ class Rank(models.Model):
 
 class Departament(models.Model):
     name = models.CharField('Полное название звания', max_length=100)
-    region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True)
+    region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True, verbose_name='Регион')
     address = models.CharField('Адрес местонахождения отдела', max_length=100, blank=True)
 
     def __str__(self):

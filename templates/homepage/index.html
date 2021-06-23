@@ -7,28 +7,29 @@
     <!--begin::Dashboard-->
     <!--begin::Row-->
     <div class="row">
+      <!--begin::ТЕЛЕФОННЫЙ СПРАВОЧНИК ГК-->
+      <div class="col-xl-2">
+        {% include 'phonebook/dash.html' %}
+      </div>
       <div class="col-xl-4">
         <div class="row">
           <div class="col-xl-12">
             <!--begin::Nav Panel Widget 3-->
-            {% include 'vng_stat/dash.html' %}
+            {% include 'vng_incidents/dash.html' %}
             <!--end::Nav Panel Widget 3-->
           </div>
         </div>
         <div class="row">
           <div class="col-xl-12">
-            {% include 'vng_incidents/dash.html' %}
+            {% include 'vng_stat/dash.html' %}
           </div>
         </div>
       </div>
-      <div class="col-xl-8">
+
+      <div class="col-xl-6">
         <div class="row">
-          <div class="col-xl-3">
-            <!--begin::Tiles Widget 3-->
-            {% include 'phonebook/dash.html' %}
-            <!--end::Tiles Widget 3-->
-          </div>
-          <div class="col-xl-9">
+
+          <div class="col-xl-12">
             <!--begin::Mixed Widget 10-->
             {% include 'news/news.html' %}
             <!--end::Mixed Widget 10-->
