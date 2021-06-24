@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from .models import Contact
-from homepage.models import FedRegion, Region, Job, Rank, Departament, STATUS_CONTACT_CHOICES
+from .models import Contact, Departament
+from homepage.models import FedRegion, Region, Job, Rank, STATUS_CONTACT_CHOICES
 from django.http import JsonResponse
 
 
@@ -13,6 +13,20 @@ def index(request):
     ranks = Rank.objects.all()
     deps = Departament.objects.all()
 
+    distincts = Departament.objects.filter(type=1)
+    distinct_emails = {}
+
+    delim = ";"
+    distinct_emails = ''
+    all_emails = ''
+    email_list = list(Contact.objects.filter(departament__type=1).values_list('email', flat=True))
+    for email in email_list:
+        distinct_emails = distinct_emails + str(email) + delim
+
+    email_list = list(Contact.objects.values_list('email', flat=True))
+    for email in email_list:
+        all_emails = all_emails + str(email) + delim
+
     context = {
         'contacts': contacts,
         'fed_regions': fed_regions,
@@ -20,6 +34,8 @@ def index(request):
         'jobs': jobs,
         'ranks': ranks,
         'deps': deps,
+        'distinct_emails': distinct_emails,
+        'all_emails': all_emails,
     }
     return render(request, 'phonebook/index.html', context)
 
@@ -32,9 +48,9 @@ def deps(request, *args, **kwargs):
 
     if data.get('query[generalSearch]'):
         query = data.get('query[generalSearch]')
-        departs = Departament.objects.filter(contact__sur_name__icontains=str(query))
+        departs = Departament.objects.filter(contact__sur_name__icontains=str(query)).order_by('region__name', 'type')
     else:
-        departs = Departament.objects.all()
+        departs = Departament.objects.order_by('region__name', 'type')
     count = departs.count()
     meta_data = {}
     meta_data['page'] = data.get('pagination[page]')
@@ -94,7 +110,7 @@ def pers(request, *args, **kwargs):
                 str(contact.sur_name)
                 + ' ' + str(contact.name)
                 + ' ' + str(contact.patronymic)
-                         )
+        )
         jdata['rank'] = contact.rank.short_name
         jdata['job'] = contact.job.short_name
         jdata['work_phone'] = contact.work_phone

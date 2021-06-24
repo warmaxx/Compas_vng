@@ -212,7 +212,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
 								status[row.status].title +
 								'    </button>\n' +
-
+								//При добавлении нового типа поменять в файле модели Статуса
 								'    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/0/">На службе</a>\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/1/">Болен</a>\n' +

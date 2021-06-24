@@ -51,17 +51,7 @@ class Rank(models.Model):
         verbose_name_plural = 'Звания'
 
 
-class Departament(models.Model):
-    name = models.CharField('Полное название звания', max_length=100)
-    region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True, verbose_name='Регион')
-    address = models.CharField('Адрес местонахождения отдела', max_length=100, blank=True)
-
-    def __str__(self):
-        return str(self.name) + " | " + str(self.region)
-
-    class Meta:
-        verbose_name = 'Отдел'
-        verbose_name_plural = 'Отделы'
+# При добавлении нового типа поменять в файле data-ajax-phonebook.js
 
 
 STATUS_CONTACT_CHOICES = [

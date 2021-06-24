@@ -1,5 +1,25 @@
 from django.db import models
-from homepage.models import Region, FedRegion, Job, Rank, Departament, STATUS_CONTACT_CHOICES
+from homepage.models import Region, FedRegion, Job, Rank, STATUS_CONTACT_CHOICES
+
+
+DEPARTAMENT_TYPE = [
+    (1, 'Округ'),
+    (2, 'Отдел')
+]
+
+
+class Departament(models.Model):
+    name = models.CharField('Полное название звания', max_length=100)
+    region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True, verbose_name='Регион')
+    address = models.CharField('Адрес местонахождения отдела', max_length=100, blank=True)
+    type = models.IntegerField('Тип подразделения', choices=DEPARTAMENT_TYPE)
+
+    def __str__(self):
+        return str(self.name) + " | " + str(self.region)
+
+    class Meta:
+        verbose_name = 'Отдел'
+        verbose_name_plural = 'Отделы'
 
 
 class Contact(models.Model):
@@ -13,7 +33,7 @@ class Contact(models.Model):
     cell_phone = models.CharField('Мобильный номер', max_length=100, blank=True)
     email = models.EmailField('E-mail @rosgvard.ru', max_length=100, blank=True)
     comment = models.TextField('Комментарий', blank=True)
-    status = models.IntegerField('Статус', choices=STATUS_CONTACT_CHOICES, max_length=20)
+    status = models.IntegerField('Статус', choices=STATUS_CONTACT_CHOICES)
 
     def __str__(self):
         return str(self.rank.full_name) + " | " + str(self.sur_name) + " " + str(self.name) + " " + str(
@@ -22,3 +42,4 @@ class Contact(models.Model):
     class Meta:
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакты'
+
