@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from .models import Contact, Status
-from homepage.models import FedRegion, Region, Job, Rank, Departament
+from .models import Contact
+from homepage.models import FedRegion, Region, Job, Rank, Departament, STATUS_CONTACT_CHOICES
 from django.http import JsonResponse
 
 
 def index(request):
     contacts = Contact.objects.all()
-    statuses = Status.objects.all()
     fed_regions = FedRegion.objects.all()
     regions = Region.objects.all()
     jobs = Job.objects.all()
@@ -21,7 +20,6 @@ def index(request):
         'jobs': jobs,
         'ranks': ranks,
         'deps': deps,
-        'statuses': statuses,
     }
     return render(request, 'phonebook/index.html', context)
 
@@ -103,7 +101,7 @@ def pers(request, *args, **kwargs):
         jdata['cell_phone'] = contact.cell_phone
         jdata['email'] = contact.email
         jdata['comment'] = contact.comment
-        jdata['status'] = contact.status.pk
+        jdata['status'] = contact.status
         jdata['time'] = contact.departament.region.timezone
         j.append(jdata)
     jpers['meta'] = meta_data
@@ -114,8 +112,8 @@ def pers(request, *args, **kwargs):
 @csrf_exempt
 def change_status(request, *args, **kwargs):
     contact = Contact.objects.get(id=kwargs['pers_id'])
-    status = Status.objects.get(id=kwargs['status_id'])
-    contact.status = status
+    status = STATUS_CONTACT_CHOICES[kwargs['status_id']]
+    contact.status = status[0]
     contact.save()
     return redirect('/phonebook/')
 

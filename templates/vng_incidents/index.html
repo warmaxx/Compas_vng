@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ИС ГАСТРОЛЁР | Происшествия | Список происшествий</title>
-</head>
-<body>
-<h1>ИС ГАСТРОЛЁР | Происшествия | Список происшествий</h1>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ИС Гастролёр | Инциденты{% endblock %}
+{% block header %}Инциденты{% endblock %}
+{% block page_css %}
+  <link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
+{% endblock %}
+{% block container %}
+  <div class="container">
+    <!--begin::Card-->
 
-<ul>
-    <li>
-        <a href="{% url 'index' %}">Главная</a>
-    </li>
-</ul>
+    <!--end::Card-->
+  </div>
+{% endblock %}
+{% block page_script %}
 
-
-
-</body>
-</html>
+{% endblock %}

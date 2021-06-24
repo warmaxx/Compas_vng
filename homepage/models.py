@@ -62,3 +62,15 @@ class Departament(models.Model):
     class Meta:
         verbose_name = 'Отдел'
         verbose_name_plural = 'Отделы'
+
+
+STATUS_CONTACT_CHOICES = [
+    (0, 'На службе'),
+    (1, 'Болен'),
+    (2, 'Коммандировка'),
+    (3, 'Отпуск'),
+    (4, 'Декрет'),
+    (5, 'Уволен'),
+    (6, 'Пенсия'),
+    (7, 'Переведен'),
+]
