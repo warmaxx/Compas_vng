@@ -13,9 +13,6 @@ def index(request):
     ranks = Rank.objects.all()
     deps = Departament.objects.all()
 
-    distincts = Departament.objects.filter(type=1)
-    distinct_emails = {}
-
     delim = ";"
     distinct_emails = ''
     all_emails = ''
@@ -87,7 +84,6 @@ def deps(request, *args, **kwargs):
 def pers(request, *args, **kwargs):
     data = request.POST
     deps_id = data.get('query[CustomerID]')
-    contacts = Contact.objects.all()
     contacts = Contact.objects.filter(departament_id=deps_id)
     limit = data.get('pagination[perpage]', 10)
     offset = data.get('pagination[page]', 0)
