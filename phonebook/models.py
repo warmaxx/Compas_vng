@@ -4,7 +4,9 @@ from homepage.models import Region, FedRegion, Job, Rank, STATUS_CONTACT_CHOICES
 
 DEPARTAMENT_TYPE = [
     (1, 'Округ'),
-    (2, 'Отдел')
+    (2, 'Отдел'),
+    (3, 'Отделение'),
+    (4, 'Группа'),
 ]
 
 

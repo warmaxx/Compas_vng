@@ -1,17 +1,24 @@
 from django.db import models
+from django.utils import timezone
 from homepage.models import Region
 
+
 SOURCE_CHOICE = [
-    (1, 'СМИ'),
-    (2, 'Доклад тер. подр.')
+    ('СМИ', 'СМИ'),
+    ('Доклад тер. подр.', 'Доклад тер. подр.')
+]
+
+SUBJECT_CHOICE = [
+    ('Объект ТЭК', 'Объект ТЭК'),
+    ('Ведомственная охрана', 'Ведомственная охрана')
 ]
 
 
 class Incident(models.Model):
-    date_time = models.DateTimeField('Дата и время происшествия', auto_now=True, editable=False)
+    date_time = models.DateTimeField('Дата и время происшествия',  editable=False, auto_now_add= True)
     region = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
-    source = models.IntegerField('Источник', choices=SOURCE_CHOICE)
-    subject = models.TextField('Субьект происшествия')
+    source = models.CharField('Источник', choices=SOURCE_CHOICE, max_length=20)
+    subject = models.CharField('Субъект происшествия', choices=SUBJECT_CHOICE, max_length=22)
     inc_text = models.TextField('Происшествие')
     result = models.TextField('Результат')
     comment = models.TextField('Примечание')

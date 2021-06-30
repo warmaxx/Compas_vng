@@ -5,213 +5,268 @@
 {% block page_css %}
   <link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
         type="text/css"/>
+
 {% endblock %}
 {% block container %}
-  <div class="container">
+  <div class="container col-10">
     <!--begin::Card-->
     <div class="card card-custom">
       <div class="card-header flex-wrap border-0 pt-6 pb-0">
         <div class="card-title">
-          <h3 class="card-label">JSON Datatable
-            <span class="d-block text-muted pt-2 font-size-sm">Initialized from remote json file</span></h3>
+          <h3 class="card-label">Сведения о происшествиях
+            <span class="d-block text-muted pt-2 font-size-sm"></span></h3>
         </div>
-        <div class="card-toolbar">
-          <!--begin::Dropdown-->
-          <div class="dropdown dropdown-inline mr-2">
-            <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<span class="svg-icon svg-icon-md">
-													<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                               width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-															<rect x="0" y="0" width="24" height="24"></rect>
-															<path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
-                                    fill="#000000" opacity="0.3"></path>
-															<path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
-                                    fill="#000000"></path>
-														</g>
-													</svg>
-                          <!--end::Svg Icon-->
-												</span>Export
-            </button>
-            <!--begin::Dropdown Menu-->
-            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-              <!--begin::Navigation-->
-              <ul class="navi flex-column navi-hover py-2">
-                <li class="navi-header font-weight-bolder text-uppercase font-size-sm text-primary pb-2">Choose an
-                  option:
-                </li>
-                <li class="navi-item">
-                  <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-print"></i>
-																</span>
-                    <span class="navi-text">Print</span>
-                  </a>
-                </li>
-                <li class="navi-item">
-                  <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-copy"></i>
-																</span>
-                    <span class="navi-text">Copy</span>
-                  </a>
-                </li>
-                <li class="navi-item">
-                  <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-excel-o"></i>
-																</span>
-                    <span class="navi-text">Excel</span>
-                  </a>
-                </li>
-                <li class="navi-item">
-                  <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-text-o"></i>
-																</span>
-                    <span class="navi-text">CSV</span>
-                  </a>
-                </li>
-                <li class="navi-item">
-                  <a href="#" class="navi-link">
-																<span class="navi-icon">
-																	<i class="la la-file-pdf-o"></i>
-																</span>
-                    <span class="navi-text">PDF</span>
-                  </a>
-                </li>
-              </ul>
-              <!--end::Navigation-->
-            </div>
-            <!--end::Dropdown Menu-->
-          </div>
-          <!--end::Dropdown-->
-          <!--begin::Button-->
-          <a href="#" class="btn btn-primary font-weight-bolder">
-											<span class="svg-icon svg-icon-md">
-												<!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Flatten.svg-->
-												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                             height="24px" viewBox="0 0 24 24" version="1.1">
-													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-														<rect x="0" y="0" width="24" height="24"></rect>
-														<circle fill="#000000" cx="9" cy="15" r="6"></circle>
-														<path d="M8.8012943,7.00241953 C9.83837775,5.20768121 11.7781543,4 14,4 C17.3137085,4 20,6.6862915 20,10 C20,12.2218457 18.7923188,14.1616223 16.9975805,15.1987057 C16.9991904,15.1326658 17,15.0664274 17,15 C17,10.581722 13.418278,7 9,7 C8.93357256,7 8.86733422,7.00080962 8.8012943,7.00241953 Z"
-                                  fill="#000000" opacity="0.3"></path>
-													</g>
-												</svg>
-                        <!--end::Svg Icon-->
-											</span>New Record</a>
-          <!--end::Button-->
-        </div>
+
       </div>
       <div class="card-body">
         <!--begin: Search Form-->
         <!--begin::Search Form-->
-        <div class="mb-7">
-          <div class="row align-items-center">
-            <div class="col-lg-9 col-xl-8">
-              <div class="row align-items-center">
-                <div class="col-md-4 my-2 my-md-0">
-                  <div class="input-icon">
-                    <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query">
-                    <span>
-																	<i class="flaticon2-search-1 text-muted"></i>
-																</span>
-                  </div>
-                </div>
-                <div class="col-md-4 my-2 my-md-0">
-                  <div class="d-flex align-items-center">
-                    <label class="mr-3 mb-0 d-none d-md-block">Status:</label>
-                    <div class="dropdown bootstrap-select form-control dropup"><select class="form-control"
-                                                                                       id="kt_datatable_search_status"
-                                                                                       tabindex="null">
-                      <option value="">All</option>
-                      <option value="1">Pending</option>
-                      <option value="2">Delivered</option>
-                      <option value="3">Canceled</option>
-                      <option value="4">Success</option>
-                      <option value="5">Info</option>
-                      <option value="6">Danger</option>
-                    </select>
-                      <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder"
-                              data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox"
-                              aria-expanded="false" data-id="kt_datatable_search_status" title="All">
-                        <div class="filter-option">
-                          <div class="filter-option-inner">
-                            <div class="filter-option-inner-inner">All</div>
-                          </div>
-                        </div>
-                      </button>
-                      <div class="dropdown-menu" style="max-height: 344.25px; overflow: hidden; min-height: 130px;">
-                        <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1"
-                             aria-activedescendant="bs-select-1-0"
-                             style="max-height: 332.25px; overflow-y: auto; min-height: 118px;">
-                          <ul class="dropdown-menu inner show" role="presentation"
-                              style="margin-top: 0px; margin-bottom: 0px;">
-                            <li class="selected active"><a role="option" class="dropdown-item active selected"
-                                                           id="bs-select-1-0" tabindex="0" aria-setsize="7"
-                                                           aria-posinset="1" aria-selected="true"><span
-                                    class="text">All</span></a></li>
-                            <li><a role="option" class="dropdown-item" id="bs-select-1-1" tabindex="0" aria-setsize="7"
-                                   aria-posinset="2"><span class="text">Pending</span></a></li>
-                            <li class="selected active"><a role="option" class="dropdown-item active selected"
-                                                           id="bs-select-1-2" tabindex="0" aria-setsize="7"
-                                                           aria-posinset="3" aria-selected="true"><span class="text">Delivered</span></a>
-                            </li>
-                            <li><a role="option" class="dropdown-item" id="bs-select-1-3" tabindex="0"><span
-                                    class="text">Canceled</span></a></li>
-                            <li><a role="option" class="dropdown-item" id="bs-select-1-4" tabindex="0"><span
-                                    class="text">Success</span></a></li>
-                            <li><a role="option" class="dropdown-item" id="bs-select-1-5" tabindex="0"><span
-                                    class="text">Info</span></a></li>
-                            <li><a role="option" class="dropdown-item" id="bs-select-1-6" tabindex="0"><span
-                                    class="text">Danger</span></a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 my-2 my-md-0">
-                  <div class="d-flex align-items-center">
-                    <label class="mr-3 mb-0 d-none d-md-block">Type:</label>
-                    <div class="dropdown bootstrap-select form-control"><select class="form-control"
-                                                                                id="kt_datatable_search_type">
-                      <option value="">All</option>
-                      <option value="1">Online</option>
-                      <option value="2">Retail</option>
-                      <option value="3">Direct</option>
-                    </select>
-                      <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder"
-                              data-toggle="dropdown" role="combobox" aria-owns="bs-select-2" aria-haspopup="listbox"
-                              aria-expanded="false" data-id="kt_datatable_search_type" title="All">
-                        <div class="filter-option">
-                          <div class="filter-option-inner">
-                            <div class="filter-option-inner-inner">All</div>
-                          </div>
-                        </div>
-                      </button>
-                      <div class="dropdown-menu ">
-                        <div class="inner show" role="listbox" id="bs-select-2" tabindex="-1">
-                          <ul class="dropdown-menu inner show" role="presentation"></ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-              <a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
-            </div>
-          </div>
-        </div>
+        {#        <div class="mb-7">#}
+        {#          <div class="row align-items-center">#}
+        {#            <div class="col-lg-9 col-xl-8">#}
+        {#              <div class="row align-items-center">#}
+        {#                <div class="col-md-4 my-2 my-md-0 ">#}
+        {#                  <div class="input-icon">#}
+        {#                    <input type="text" class="form-control" placeholder="Поиск по текстам..."#}
+        {#                           id="kt_datatable_search_query">#}
+        {#                    <span>#}
+        {#																	<i class="flaticon2-search-1 text-muted"></i>#}
+        {#																</span>#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#                <div class="col-md-4 my-2 my-md-0">#}
+        {#                  <div class="d-flex align-items-center">#}
+        {#                    <label class="mr-3 mb-0 d-none d-md-block">Регион:</label>#}
+        {#                    <div class="dropdown bootstrap-select form-control dropup">#}
+        {#                      <select class="form-control"#}
+        {#                              id="kt_datatable_search_region"#}
+        {#                              tabindex="null">#}
+        {#                        <option value="">Все</option>#}
+        {#                        {% for region in regions %}#}
+        {#                          <option value="{{ region.name }}">{{ region.name }}</option>#}
+        {#                        {% endfor %}#}
+        {#                      </select>#}
+        {#                      <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder"#}
+        {#                              data-toggle="dropdown" role="combobox" aria-owns="bs-select-1" aria-haspopup="listbox"#}
+        {#                              aria-expanded="false" data-id="kt_datatable_search_region" title="All">#}
+        {#                        <div class="filter-option">#}
+        {#                          <div class="filter-option-inner">#}
+        {#                            <div class="filter-option-inner-inner">All</div>#}
+        {#                          </div>#}
+        {#                        </div>#}
+        {#                      </button>#}
+        {#                      <div class="dropdown-menu" style="max-height: 344.25px; overflow: hidden; min-height: 130px;">#}
+        {#                        <div class="inner show" role="listbox" id="bs-select-1" tabindex="-1"#}
+        {#                             aria-activedescendant="bs-select-1-0"#}
+        {#                             style="max-height: 332.25px; overflow-y: auto; min-height: 118px;">#}
+        {#                          <ul class="dropdown-menu inner show" role="presentation"#}
+        {#                              style="margin-top: 0px; margin-bottom: 0px;">#}
+        {#                            <li class="selected active"><a role="option" class="dropdown-item active selected"#}
+        {#                                                           id="bs-select-1-0" tabindex="0" aria-setsize="7"#}
+        {#                                                           aria-posinset="1" aria-selected="true"><span#}
+        {#                                    class="text">All</span></a></li>#}
+        {#                            <li><a role="option" class="dropdown-item" id="bs-select-1-1" tabindex="0" aria-setsize="7"#}
+        {#                                   aria-posinset="2"><span class="text">Pending</span></a></li>#}
+        {#                            <li class="selected active"><a role="option" class="dropdown-item active selected"#}
+        {#                                                           id="bs-select-1-2" tabindex="0" aria-setsize="7"#}
+        {#                                                           aria-posinset="3" aria-selected="true"><span class="text">Delivered</span></a>#}
+        {#                            </li>#}
+        {#                            <li><a role="option" class="dropdown-item" id="bs-select-1-3" tabindex="0"><span#}
+        {#                                    class="text">Canceled</span></a></li>#}
+        {#                            <li><a role="option" class="dropdown-item" id="bs-select-1-4" tabindex="0"><span#}
+        {#                                    class="text">Success</span></a></li>#}
+        {#                            <li><a role="option" class="dropdown-item" id="bs-select-1-5" tabindex="0"><span#}
+        {#                                    class="text">Info</span></a></li>#}
+        {#                            <li><a role="option" class="dropdown-item" id="bs-select-1-6" tabindex="0"><span#}
+        {#                                    class="text">Danger</span></a></li>#}
+        {#                          </ul>#}
+        {#                        </div>#}
+        {#                      </div>#}
+        {#                    </div>#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#                <div class="col-md-4 my-2 my-md-0">#}
+        {#                  <div class="d-flex align-items-center">#}
+        {#                    <label class="mr-3 mb-0 d-none d-md-block">Субъект происшествия:</label>#}
+        {#                    <div class="dropdown bootstrap-select form-control"><select class="form-control"#}
+        {#                                                                                id="kt_datatable_search_subject">#}
+        {#                      <option value="">Все</option>#}
+        {#                      <option value="Объект ТЭК">Объект ТЭК</option>#}
+        {#                      <option value="Ведомственная охрана">Ведомственная охрана</option>#}
+        {#                    </select>#}
+        {#                      <button type="button" tabindex="-1" class="btn dropdown-toggle btn-light bs-placeholder"#}
+        {#                              data-toggle="dropdown" role="combobox" aria-owns="bs-select-2" aria-haspopup="listbox"#}
+        {#                              aria-expanded="false" data-id="kt_datatable_search_subject" title="All">#}
+        {#                        <div class="filter-option">#}
+        {#                          <div class="filter-option-inner">#}
+        {#                            <div class="filter-option-inner-inner">All</div>#}
+        {#                          </div>#}
+        {#                        </div>#}
+        {#                      </button>#}
+        {#                      <div class="dropdown-menu ">#}
+        {#                        <div class="inner show" role="listbox" id="bs-select-2" tabindex="-1">#}
+        {#                          <ul class="dropdown-menu inner show" role="presentation"></ul>#}
+        {#                        </div>#}
+        {#                      </div>#}
+        {#                    </div>#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#                <div class="col-lg-12 mb-lg-0 mb-12 pt-3">#}
+        {#                  <label>Дата происшествия:</label>#}
+        {#                  <div class="input-daterange input-group" id="kt_datepicker">#}
+        {#                    <input type="text" class="form-control datatable-input" name="start" placeholder="От"#}
+        {#                           data-col-index="8">#}
+        {#                    <div class="input-group-append">#}
+        {#															<span class="input-group-text">#}
+        {#																<i class="la la-ellipsis-h"></i>#}
+        {#															</span>#}
+        {#                    </div>#}
+        {#                    <input type="text" class="form-control datatable-input" name="end" placeholder="До"#}
+        {#                           data-col-index="8">#}
+        {#                  </div>#}
+        {#                </div>#}
+        {#              </div>#}
+        {#            </div>#}
+        {#            <div class="col-lg-3 col-xl-4">#}
+        {#              <div class="row ">#}
+        {#                <div class="col-md-4 my-2 my-md-0 ">#}
+        {#                  <label class="mr-3 mb-0 d-none d-md-block">Всего происшествий за год - {{ count_now_year }}</label>#}
+        {#                  <label class="mr-3 mb-0 d-none d-md-block">За последние сутки - {{ count_last_day }} </label>#}
+        {#                </div>#}
+        {#              </div>#}
+        {#            </div>#}
+        {##}
+        {#          </div>#}
+        {#        </div>#}
         <!--end::Search Form-->
         <!--end: Search Form-->
         <!--begin: Datatable-->
-        <div class="my_datatable" id="kt_datatable"></div>
+        {#        <div class="my_datatable datatable datatable-default datatable-bordered" id="kt_datatable"></div>#}
+        <form class="mb-15" _lpchecked="1" method="post" action="{% url 'vng_incidents:incs' %}">
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="row mb-6">
+                <div class="col-lg-4 mb-lg-0 mb-6">
+                  <label>Номер происшествия:</label>
+                  <input type="text" class="form-control datatable-input" placeholder="#" data-col-index="0">
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-6">
+                  <label>Регион:</label>
+                  <select class="form-control datatable-input" data-col-index="2">
+                    <option value="">Выберите регион</option>
+                    {% for region in regions %}
+                      <option value="{{ region.id }}">{{ region.name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-6">
+                  <label>Субъект:</label>
+                  <select class="form-control datatable-input" data-col-index="4">
+                    <option value="">Выберите субъект</option>
+                    <option value="Объект ТЭК">Объект ТЭК</option>
+                    <option value="Ведомственная охрана">Ведомственная охрана</option>
+                  </select>
+                </div>
+
+              </div>
+              <div class="row mb-8">
+                <div class="col-lg-4 mb-lg-0 mb-6">
+                  <label>Дата происшествия:</label>
+                  <div class="input-daterange input-group" id="kt_datepicker">
+                    <input type="text" class="form-control datatable-input" name="start" placeholder="От"
+                           data-col-index="5">
+                    <div class="input-group-append">
+															<span class="input-group-text">
+																<i class="la la-ellipsis-h"></i>
+															</span>
+                    </div>
+                    <input type="text" class="form-control datatable-input" name="end" placeholder="До"
+                           data-col-index="5">
+                  </div>
+                </div>
+                <div class="col-lg-4 mb-lg-0 mb-6">
+                  <label>Источник:</label>
+                  <select class="form-control datatable-input" data-col-index="6">
+                    <option value="">Выберите источник</option>
+                    <option value="СМИ">СМИ</option>
+                    <option value="Доклад тер. подр.">Доклад тер. подр.</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-8">
+                <div class="col-lg-12">
+                  <button class="btn btn-primary btn-primary--icon" id="kt_search">
+													<span>
+														<i class="la la-search"></i>
+														<span>Поиск</span>
+													</span>
+                  </button>&nbsp;&nbsp;
+                  <button class="btn btn-secondary btn-secondary--icon" id="kt_reset">
+													<span>
+														<i class="la la-close"></i>
+														<span>Сброс</span>
+													</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="row row-paddingless">
+                <div class="col mr-8">
+                  <label>Происшествий за год</label>
+                  <div class="font-size-h4 font-weight-bolder">{{ count_now_year }}</div>
+                </div>
+                <div class="col">
+                  <label>Происшествий за сутки</label>
+                  <div class="font-size-h4 font-weight-bolder">{{ count_last_day }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+          <div class="row">
+            <div class="col-sm-12">
+              <table class="table table-bordered table-hover table-checkable dataTable dtr-inline" id="kt_datatable"
+                     role="grid" aria-describedby="kt_datatable_info" style="width: 1230px;">
+                <thead>
+                <tr role="row">
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 30px;" aria-label="Record ID: activate to sort column descending"
+                      aria-sort="ascending">#
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 80px;" aria-label="Order ID: activate to sort column ascending">Дата происшествия
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 120px;" aria-label="Country: activate to sort column ascending">Регион
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 60px;" aria-label="Ship City: activate to sort column ascending">Источник
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 100px;" aria-label="Company Agent: activate to sort column ascending">Субъект
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 250px;" aria-label="Ship Date: activate to sort column ascending">Фабула происшествия
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 250px;" aria-label="Status: activate to sort column ascending">Результат
+                  </th>
+                  <th tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1"
+                      style="width: 250px;" aria-label="Type: activate to sort column ascending">Примечание
+                  </th>
+
+                </tr>
+                </thead>
+              </table>
+              <div id="kt_datatable_processing" class="dataTables_processing card" style="display: none;">
+                Processing...
+              </div>
+            </div>
+          </div>
+
+        </div>
         <!--end: Datatable-->
       </div>
     </div>
@@ -219,5 +274,7 @@
   </div>
 {% endblock %}
 {% block page_script %}
-  <script src="{% static 'dist/assets/js/pages/crud/ktdatatable/base/data-json-inc.js' %}"></script>
+  <script src="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.js' %}"></script>
+  {#  <script src="{% static 'dist/assets/js/pages/crud/ktdatatable/base/data-json-inc.js' %}"></script>#}
+  <script src="{% static 'dist/assets/js/pages/crud/datatables/search-options/advanced-search.js' %}"></script>
 {% endblock %}

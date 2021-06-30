@@ -65355,7 +65355,7 @@ code {
 .datatable.datatable-default > .datatable-table > .datatable-head .datatable-row > .datatable-cell,
 .datatable.datatable-default > .datatable-table > .datatable-body .datatable-row > .datatable-cell,
 .datatable.datatable-default > .datatable-table > .datatable-foot .datatable-row > .datatable-cell {
-  vertical-align: middle;
+  vertical-align: top;
   padding: 1rem 1rem;
   font-size: 1rem;
 }
@@ -78921,7 +78921,7 @@ code {
 .dataTables_wrapper .dataTable th, .dataTables_wrapper .dataTable td {
   font-weight: 400;
   font-size: 1rem;
-  vertical-align: middle;
+  vertical-align: top;
   color: #3F4254;
   -webkit-transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
