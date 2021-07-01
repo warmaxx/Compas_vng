@@ -15,13 +15,13 @@ SUBJECT_CHOICE = [
 
 
 class Incident(models.Model):
-    date_time = models.DateTimeField('Дата и время происшествия',  editable=False, auto_now_add= True)
+    date_time = models.DateTimeField('Дата и время происшествия')
     region = models.ForeignKey(Region, on_delete=models.PROTECT, verbose_name='Регион')
     source = models.CharField('Источник', choices=SOURCE_CHOICE, max_length=20)
     subject = models.CharField('Субъект происшествия', choices=SUBJECT_CHOICE, max_length=22)
     inc_text = models.TextField('Происшествие')
-    result = models.TextField('Результат')
-    comment = models.TextField('Примечание')
+    result = models.TextField('Результат', blank=True)
+    comment = models.TextField('Примечание', blank=True)
 
     def __str__(self):
         return str(self.date_time) + " | " + str(self.inc_text[:50])

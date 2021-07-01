@@ -15,7 +15,7 @@ class FedRegion(models.Model):
 class Region(models.Model):
     name = models.CharField('Название категории объекта', max_length=100)
     fedname = models.ForeignKey(FedRegion, on_delete=models.CASCADE, verbose_name='Округ')
-    timezone = models.IntegerField('Часовой пояс региона GMT', default=0)
+    timezone = models.IntegerField('Часовой пояс региона GMT', default=0, help_text='GMT')
 
     def __str__(self):
         return str(self.name + " | " + str(self.timezone))

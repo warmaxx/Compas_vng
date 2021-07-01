@@ -16,6 +16,7 @@ def index(request):
     delim = ";"
     distinct_emails = ''
     all_emails = ''
+    all_ground_emails = ''
     email_list = list(Contact.objects.filter(departament__type=1).values_list('email', flat=True))
     for email in email_list:
         distinct_emails = distinct_emails + str(email) + delim
@@ -23,6 +24,10 @@ def index(request):
     email_list = list(Contact.objects.values_list('email', flat=True))
     for email in email_list:
         all_emails = all_emails + str(email) + delim
+
+    email_list = list(Contact.objects.exclude(departament__type=1).values_list('email', flat=True))
+    for email in email_list:
+        all_ground_emails = all_ground_emails + str(email) + delim
 
     context = {
         'contacts': contacts,
@@ -33,6 +38,7 @@ def index(request):
         'deps': deps,
         'distinct_emails': distinct_emails,
         'all_emails': all_emails,
+        'all_ground_emails':all_ground_emails,
     }
     return render(request, 'phonebook/index.html', context)
 
@@ -42,12 +48,10 @@ def deps(request, *args, **kwargs):
     data = request.POST
     limit = data.get('pagination[perpage]', 10)
     offset = data.get('pagination[page]', 0)
-
+    departs = Departament.objects.order_by('position')
     if data.get('query[generalSearch]'):
         query = data.get('query[generalSearch]')
-        departs = Departament.objects.filter(contact__sur_name__icontains=str(query)).order_by('region__name', 'type')
-    else:
-        departs = Departament.objects.order_by('region__name', 'type')
+        departs = departs.filter(contact__sur_name__icontains=str(query))
     count = departs.count()
     meta_data = {}
     meta_data['page'] = data.get('pagination[page]')
