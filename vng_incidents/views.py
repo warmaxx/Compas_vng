@@ -40,7 +40,6 @@ def incs(request, *args, **kwargs):
     source = data['columns[6][search][value]']
     start = int(data['start'])
     length = int(data['length'])
-    print(data)
     if len(dates) > 0:
         date_start, date_end = str(dates).split('|')
     else:
