@@ -3,25 +3,25 @@
 {% block title %}ИС Гастролёр | Загрузка объектов ТЭК{% endblock %}
 {% block header %}Загрузка объектов ТЭК{% endblock %}
 {% block page_css %}
-<link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
-          type="text/css"/>
+  <link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
 {% endblock %}
 {% block container %}
   <div class="container col-10">
-            <!--begin::Notice-->
-            <div class="row">
-              <div class="col-xl-12">
-                <!--begin::Nav Panel Widget 1-->
-                <div class="card card-custom gutter-b">
-                  <!--begin::Body-->
-                  <div class="card-body">
-                    <!--begin::Nav Tabs-->
-                    <ul class="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row"
-                        role="tablist">
-                      <!--begin::Item-->
-                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                        <a class="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                           href="{% url 'vng_stat:index' %}">
+    <!--begin::Notice-->
+    <div class="row">
+      <div class="col-xl-12">
+        <!--begin::Nav Panel Widget 1-->
+        <div class="card card-custom gutter-b">
+          <!--begin::Body-->
+          <div class="card-body">
+            <!--begin::Nav Tabs-->
+            <ul class="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row"
+                role="tablist">
+              <!--begin::Item-->
+              <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                <a class="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                   href="{% url 'vng_stat:index' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
@@ -44,14 +44,14 @@
                                   <!--end::Svg Icon-->
 																</span>
 															</span>
-                          <span class="nav-text font-size-lg py-2 font-weight-bold text-center">Список проверок</span>
-                        </a>
-                      </li>
-                      <!--end::Item-->
-                      <!--begin::Item-->
-                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                        <a class="nav-link  border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                           href="{% url 'vng_stat:stat' %}">
+                  <span class="nav-text font-size-lg py-2 font-weight-bold text-center">Список проверок</span>
+                </a>
+              </li>
+              <!--end::Item-->
+              <!--begin::Item-->
+              <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                <a class="nav-link  border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                   href="{% url 'vng_stat:stat' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
@@ -72,14 +72,14 @@
                                   <!--end::Svg Icon-->
 																</span>
 															</span>
-                          <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Статистика проверок</span>
-                        </a>
-                      </li>
-                      <!--end::Item-->
-                      <!--begin::Item-->
-                      <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                        <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                           href="{% url 'vng_stat:upload' %}">
+                  <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Статистика проверок</span>
+                </a>
+              </li>
+              <!--end::Item-->
+              <!--begin::Item-->
+              <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                   href="{% url 'vng_stat:upload' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Media/Movie-Lane2.svg-->
@@ -100,82 +100,90 @@
                                   <!--end::Svg Icon-->
 																</span>
 															</span>
-                          <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
-                        </a>
-                      </li>
-                      <!--end::Item-->
+                  <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
+                </a>
+              </li>
+              <!--end::Item-->
 
 
-                    </ul>
-                    <!--end::Nav Tabs-->
+            </ul>
+            <!--end::Nav Tabs-->
 
-                  </div>
-                  <!--end::Body-->
-                </div>
-                <!--begin::Nav Panel Widget 1-->
-              </div>
-            </div>
-            <!--end::Notice-->
-            <!--begin::Card-->
-
-            <!--end::Card-->
-            <!--begin::Card-->
-            <div class="card card-custom">
-              <div class="card-header">
-                <h3 class="card-title">
-                  Загрузка плана проверок ТЭК
-                </h3>
-              </div>
-              <!--begin::Form-->
-              <form class="form" method="post" action="{% url 'vng_stat:upload' %}" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="card-body">
-                  <div class="form-group form-group-last">
-                    <div class="alert alert-custom alert-default" role="alert">
-                      <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
-                      <div class="alert-text">
-                        <p>
-                          {% if success %}
-                            Файл успешно загружен <br>
-                            Добавлено ЮЛ - {{ ul_count }} <br>
-                            Добавлено Объектов ТЭК - {{ tek_obj_count }} <br>
-                            Добавлено проверок ТЭК - {{ check_count }} <br>
-                            Ошибки [{{ len_error_list }}]:
-                            <ul>
-                              {% for e in error_list %}
-                                <li>{{ e }}</li>
-                              {% endfor %}
-                            </ul>
-
-                          {% endif %}
-                        {% if error %}
-                          Произошла ошибка {{ error }}<br>
-                          {{ error_list }}
-                        {% endif %}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="form-group">
-                    {#                                        <label>File Browser</label>#}
-                    <div></div>
-                    <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="customFile" name="upload_file"/>
-                      <label class="custom-file-label" for="customFile">Выберите файл</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary mr-2">Загрузить</button>
-                  {#                                    <button type="reset" class="btn btn-secondary">Cancel</button>#}
-                </div>
-              </form>
-              <!--end::Form-->
-            </div>
-            <!--end::Card-->
           </div>
+          <!--end::Body-->
+        </div>
+        <!--begin::Nav Panel Widget 1-->
+      </div>
+    </div>
+    <!--end::Notice-->
+    <!--begin::Card-->
+
+    <!--end::Card-->
+    <!--begin::Card-->
+    <div class="card card-custom">
+      <div class="card-header">
+        <h3 class="card-title">
+          Загрузка плана проверок ТЭК
+        </h3>
+      </div>
+      <!--begin::Form-->
+      <form class="form" method="post" action="{% url 'vng_stat:upload' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="card-body">
+          <div class="form-group form-group-last">
+            <div class="alert alert-custom alert-default" role="alert">
+              <div class="alert-icon"><i class="flaticon-warning text-primary"></i></div>
+              <div class="alert-text">
+                <p>
+                  Имя файла должно быть латиницей без пробелов, в формате .xlsx<br>
+                  Перед загрузкой убедитель что в Системе заведены справочники:
+                <ul>
+                  <li>Федеральный округ</li>
+                  <li>Регион</li>
+                  <li>Категория объекта</li>
+                  <li>Форма проверки</li>
+                </ul>
+                {% if success %}
+                  Файл успешно загружен <br>
+                  Добавлено ЮЛ - {{ ul_count }} <br>
+                  Добавлено Объектов ТЭК - {{ tek_obj_count }} <br>
+                  Добавлено проверок ТЭК - {{ check_count }} <br>
+                  Ошибки [{{ len_error_list }}]:
+                  <ul>
+                    {% for e in error_list %}
+                      <li>{{ e }}</li>
+                    {% endfor %}
+                  </ul>
+
+                {% endif %}
+                {% if error %}
+                  Произошла ошибка {{ error }}<br>
+                  {{ error_list }}
+                {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            {#                                                            <label>Имя файла должно быть латиницей без пробелов</label>#}
+            <div></div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFile" name="upload_file" accept=".xlsx"/>
+              <label class="custom-file-label" for="customFile">Выберите файл в формате .xlsx</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-primary mr-2">Загрузить</button>
+          {#                                    <button type="reset" class="btn btn-secondary">Cancel</button>#}
+        </div>
+      </form>
+      <!--end::Form-->
+    </div>
+    <!--end::Card-->
+  </div>
 {% endblock %}
 {% block page_script %}
   <script src="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.js' %}"></script>

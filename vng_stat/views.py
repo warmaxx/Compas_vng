@@ -4,7 +4,7 @@ from .models import Check, Ul, Tek_Object, Category, Form
 import datetime
 from django.core.files.storage import FileSystemStorage
 import pylightxl as xl
-#import os
+import os
 
 month = {'Январь': 1,
          'Февраль': 2,
@@ -33,13 +33,13 @@ def upload(request):
     try:
         if request.method == 'POST' and request.FILES['upload_file']:
             myfile = request.FILES['upload_file']
-            location = 'vng_stat/xls/'
+            location = 'media/vng_stat/xls/'
             fs = FileSystemStorage(location=location)
             filename = fs.save(myfile.name, myfile)
-            uploaded_file_url = fs.url(filename)
-
+            # uploaded_file_url = fs.url(filename)
             try:
-                db = xl.readxl(location + uploaded_file_url)
+                db = xl.readxl(location + filename)
+                # db = xl.readxl(location + uploaded_file_url)
                 for row in db.ws(db.ws_names[0]).rows:
                     if str(row[16]).strip() != 'ul_inn':
                         # Проверка наличия ЮЛ
@@ -95,13 +95,19 @@ def upload(request):
                                                      target_link=str(row[12]).strip()
                                                      )
                         check_count += 1
+
             except Exception as e:
                 print(e)
+                if os.path.isfile(location + filename):
+                    os.remove(location + filename)
             success = True
+            if os.path.isfile(location + filename):
+                os.remove(location + filename)
 
     except Exception as e:
         success = False
         print(e)
+
 
     context = {
         'upload_file': upload_file,
