@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from vng_incidents import views
 
 app_name = 'vng_incidents'
 urlpatterns = [

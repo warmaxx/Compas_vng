@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
-from .models import Incident
-from homepage.models import Region
 from django.http import JsonResponse
 import datetime as dt
+
+from vng_incidents.models import Incident
+from homepage.models import Region
 
 
 def index(request):
@@ -33,6 +34,7 @@ def index(request):
 @csrf_exempt
 def incs(request, *args, **kwargs):
     data = request.POST
+    print(data)
     dates = data['columns[5][search][value]']
     region = data['columns[2][search][value]']
     inc_id = data['columns[0][search][value]']
@@ -64,9 +66,9 @@ def incs(request, *args, **kwargs):
     count = incidents.count()
     meta_data = {}
     meta_data['page'] = data.get('pagination[page]')
-    pages = int(count) // int(limit)
+    pages = int(count) // int(length)
     meta_data['pages'] = int(pages)
-    meta_data['perpage'] = int(limit)
+    meta_data['perpage'] = int(length)
     meta_data['total'] = int(count)
     meta_data['sort'] = 'asc'
     meta_data['field'] = 'RecordID'

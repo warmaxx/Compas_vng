@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Incident
+from vng_incidents.models import Incident
 
 admin.site.register(Incident)

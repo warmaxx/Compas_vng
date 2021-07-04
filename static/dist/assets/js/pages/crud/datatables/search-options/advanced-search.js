@@ -25,6 +25,7 @@ var KTDatatablesSearchOptionsAdvancedSearch = function() {
 			searchDelay: 500,
 			processing: true,
 			serverSide: true,
+
 			ajax: {
 				url: '/vng_incidents/incs/',
 				type: 'POST',

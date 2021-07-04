@@ -11747,7 +11747,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
+			"sProcessing": "Запрос обрабатывается...",
 	
 	
 			/**
