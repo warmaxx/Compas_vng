@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 app_name = 'homepage'
 urlpatterns = [
+    path('auth/', include('django.contrib.auth.urls')),
     path('', views.index, name='index'),
     path('vng_stat/', include('vng_stat.urls'), name='vng_stat'),
     path('vng_incidents/', include('vng_incidents.urls'), name='vng_incidents'),
