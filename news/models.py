@@ -11,7 +11,7 @@ class News(models.Model):
     date_start = models.DateField('Дата с которой нужно показывать новость')
     date_end = models.DateField('Дата до которой нужно показывать новость')
     image = models.ImageField('Изображение', upload_to='news/image/%Y/%m/%d/', blank=True)
-    doc = models.FileField('Файл с документом', upload_to='news/docs/%Y/%m/%d/', blank=True)
+    doc = models.FileField('Файл с документом', upload_to='news/result_report/%Y/%m/%d/', blank=True)
 
     class Meta:
         verbose_name = 'Новость'

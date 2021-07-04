@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='news',
             name='doc',
-            field=models.FileField(blank=True, upload_to='news/docs/%Y/%m/%d/', verbose_name='Файл с документом'),
+            field=models.FileField(blank=True, upload_to='news/result_report/%Y/%m/%d/', verbose_name='Файл с документом'),
         ),
         migrations.AlterField(
             model_name='news',

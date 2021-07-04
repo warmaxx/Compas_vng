@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}ИС Гастролёр{% endblock %}
-{% block header %}ИС Гастролёр{% endblock %}
+{% block title %}Система ГК ВНГ РФ{% endblock %}
+{% block header %}Система ГК ВНГ РФ{% endblock %}
 {% block container %}
   <div class="container col-10">
     <!--begin::Dashboard-->
@@ -10,7 +10,7 @@
       <!--begin::ТЕЛЕФОННЫЙ СПРАВОЧНИК ГК-->
       <div class="col-xl-2">
         {% include 'phonebook/dash.html' %}
-        {% include 'docs/dash.html' %}
+        {% include 'result_report/dash.html' %}
       </div>
       <div class="col-xl-4">
         <div class="row">
