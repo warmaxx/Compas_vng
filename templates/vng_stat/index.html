@@ -75,6 +75,7 @@
                       </li>
                       <!--end::Item-->
                       <!--begin::Item-->
+                       {% if user.is_authenticated %}
                       <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
                         <a class="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
                            href="{% url 'vng_stat:upload' %}">
@@ -101,6 +102,7 @@
                           <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
                         </a>
                       </li>
+                      {% endif %}
                       <!--end::Item-->
 
 

@@ -77,9 +77,10 @@
               </li>
               <!--end::Item-->
               <!--begin::Item-->
-              <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
-                   href="{% url 'vng_stat:upload' %}">
+              {% if user.is_authenticated %}
+                <li class="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+                  <a class="nav-link active border py-10 d-flex flex-grow-1 rounded flex-column align-items-center"
+                     href="{% url 'vng_stat:upload' %}">
 															<span class="nav-icon py-2 w-auto">
 																<span class="svg-icon svg-icon-3x">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Media/Movie-Lane2.svg-->
@@ -100,15 +101,13 @@
                                   <!--end::Svg Icon-->
 																</span>
 															</span>
-                  <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
-                </a>
-              </li>
+                    <span class="nav-text font-size-lg py-2 font-weight-bolder text-center">Загрузка данных</span>
+                  </a>
+                </li>
+              {% endif %}
               <!--end::Item-->
-
-
             </ul>
             <!--end::Nav Tabs-->
-
           </div>
           <!--end::Body-->
         </div>
