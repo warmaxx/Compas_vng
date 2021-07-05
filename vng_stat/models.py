@@ -56,7 +56,7 @@ class Tek_Object(models.Model):
 
 class Check(models.Model):
     tek_Object = models.ForeignKey(Tek_Object, on_delete=models.CASCADE, verbose_name='Объект ТЭК')
-    date_latest_check = models.DateField('Дата окончания последней проверки', blank=True)
+    date_latest_check = models.DateField('Дата окончания последней проверки', blank=True, null=True)
     date_next_check = models.DateField('Дата начала проведения следующей проверки')
     duration = models.IntegerField('Срок проведения проверки (Рабочих дней)')
     form = models.ForeignKey(Form, on_delete=models.PROTECT, verbose_name='Форма проверки')
