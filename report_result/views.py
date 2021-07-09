@@ -33,8 +33,10 @@ def index(request):
     sunday = monday + timedelta(days=6.9)
     sunday_ru = sunday.strftime('%d-%m-%Y')
 
-    doc_input_url = os.path.join(BASE_DIR, 'report_result/test_template.docx')
-    doc_output_url = os.path.join(BASE_DIR, 'report_result/generated_doc.docx')
+    # doc_input_url = os.path.join(BASE_DIR, 'report_result/test_template.docx')
+    # doc_output_url = os.path.join(BASE_DIR, 'report_result/generated_doc.docx')
+    doc_input_url = '/home/warmaxx/Gastroler/report_result/test_template.docx'
+    doc_output_url = '/home/warmaxx/Gastroler/report_result/generated_doc.docx'
     doc = DocxTemplate(doc_input_url)
 
     elements_1_1 = Modul_1_1.objects.filter(date__range=(monday, sunday)).order_by('name_from')
