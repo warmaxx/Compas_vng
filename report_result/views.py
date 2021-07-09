@@ -35,8 +35,8 @@ def index(request):
     doc_output_url = 'report_result/generated_doc.docx'
     doc = DocxTemplate(doc_input_url)
 
-    elements_1_1 = Modul_1_1.objects.filter(date__range=(monday, sunday))
-    elements_1_2 = Modul_1_2.objects.filter(date__range=(monday, sunday))
+    elements_1_1 = Modul_1_1.objects.filter(date__range=(monday, sunday)).order_by('name_from')
+    elements_1_2 = Modul_1_2.objects.filter(date__range=(monday, sunday)).order_by('name_from')
     elements_3 = Modul_3.objects.filter(date__range=(monday, sunday))
     elements_4_1 = Modul_4_1.objects.filter(date__range=(monday, sunday))
     elements_4_2 = Modul_4_2.objects.filter(date__range=(monday, sunday))
