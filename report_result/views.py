@@ -2,7 +2,9 @@ from report_result.models import Modul_1_1, Modul_1_2, Modul_3, Modul_4_1, Modul
 from docxtpl import DocxTemplate
 from datetime import datetime, timedelta
 from django.http import FileResponse
+from Gastroler.settings import BASE_DIR
 
+import os
 import locale
 
 
@@ -31,8 +33,8 @@ def index(request):
     sunday = monday + timedelta(days=6.9)
     sunday_ru = sunday.strftime('%d-%m-%Y')
 
-    doc_input_url = 'report_result/test_template.docx'
-    doc_output_url = 'report_result/generated_doc.docx'
+    doc_input_url = os.path.join(BASE_DIR, 'report_result/test_template.docx')
+    doc_output_url = os.path.join(BASE_DIR, 'report_result/generated_doc.docx')
     doc = DocxTemplate(doc_input_url)
 
     elements_1_1 = Modul_1_1.objects.filter(date__range=(monday, sunday)).order_by('name_from')
