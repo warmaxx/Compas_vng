@@ -38,7 +38,7 @@ def index(request):
         'deps': deps,
         'distinct_emails': distinct_emails,
         'all_emails': all_emails,
-        'all_ground_emails':all_ground_emails,
+        'all_ground_emails': all_ground_emails,
     }
     return render(request, 'phonebook/index.html', context)
 
