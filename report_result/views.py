@@ -23,7 +23,7 @@ def index(request):
                   'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
     now = datetime.now()
     now_day = now.day
-    now_month = month_list[now.month]
+    now_month = month_list[now.month-1]
     now_year = now.year
     now_week = now.isocalendar()[1]
 
@@ -35,8 +35,6 @@ def index(request):
 
     doc_input_url = os.path.join(BASE_DIR, 'report_result/test_template.docx')
     doc_output_url = os.path.join(BASE_DIR, 'report_result/generated_doc.docx')
-    # doc_input_url = '/home/warmaxx/Gastroler/report_result/test_template.docx'
-    # doc_output_url = '/home/warmaxx/Gastroler/report_result/generated_doc.docx'
     doc = DocxTemplate(doc_input_url)
 
     elements_1_1 = Modul_1_1.objects.filter(date__range=(monday, sunday)).order_by('name_from')
