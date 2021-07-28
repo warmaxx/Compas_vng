@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Система ГК ВНГ РФ{% endblock %}
+{% block header %}Еженедельные отчеты{% endblock %}
+{% block page_css %}
+  <link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
+{% endblock %}
+{% block container %}
+  <div class="container col-10">
+    <!--begin::Card-->
+    <div class="card card-custom">
+      <div class="card-header py-3">
+        <div class="card-title">
+											<span class="card-icon">
+												<span class="svg-icon svg-icon-md svg-icon-primary">
+													<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-bar1.svg-->
+													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                               width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+															<rect x="0" y="0" width="24" height="24"/>
+															<rect fill="#000000" opacity="0.3" x="12" y="4" width="3" height="13" rx="1.5"/>
+															<rect fill="#000000" opacity="0.3" x="7" y="9" width="3" height="8" rx="1.5"/>
+															<path d="M5,19 L20,19 C20.5522847,19 21,19.4477153 21,20 C21,20.5522847 20.5522847,21 20,21 L4,21 C3.44771525,21 3,20.5522847 3,20 L3,4 C3,3.44771525 3.44771525,3 4,3 C4.55228475,3 5,3.44771525 5,4 L5,19 Z"
+                                    fill="#000000" fill-rule="nonzero"/>
+															<rect fill="#000000" opacity="0.3" x="17" y="11" width="3" height="6" rx="1.5"/>
+														</g>
+													</svg>
+                          <!--end::Svg Icon-->
+												</span>
+											</span>
+          <h3 class="card-label">Еженедельные отчеты</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <!--begin: Search Form-->
+        <div class="row">
+          <div class="col-6">
+            <form method="post" action="{% url 'report_result:week' %}">
+              {% csrf_token %}
+              <div class="row align-items-center">
+                <div class="col-lg-6 col-xl-6">
+                  <label>Даты для формирования отчета:</label>
+                  <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">От</label>
+                    <div class="col-10">
+                      <input class="form-control" type="date" value="{{ start_date }}" id="example-date-input"
+                             name="start_date"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-date-input" class="col-2 col-form-label">До</label>
+                    <div class="col-10">
+                      <input class="form-control" type="date" value="{{ end_date }}" id="example-date-input"
+                             name="end_date"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <button type="submit" class="btn btn-success mr-2">Сформировать отчет</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <form method="post" action="{% url 'report_result:index' %}">
+              {% csrf_token %}
+              <div class="row align-items-center">
+                <div class="col-lg-12 col-xl-12">
+                  <label>Поиск по материалам отчета:</label>
+
+                  <div class="form-group row">
+                    <label for="example-search-input" class="col-4 col-form-label">Исполнитель</label>
+                    <div class="col-8">
+                      <input class="form-control" type="search" value="{{ person }}" id="example-search-input"
+                             name="person"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-search-input" class="col-4 col-form-label">Номер вх.</label>
+                    <div class="col-8">
+                      <input class="form-control" type="search" value="{{ input_no }}" id="example-search-input"
+                             name="input_no"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-search-input" class="col-4 col-form-label">Номер исх.</label>
+                    <div class="col-8">
+                      <input class="form-control" type="search" value="{{ output_no }}" id="example-search-input"
+                             name="output_no"/>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-search-input" class="col-4 col-form-label">Текст в описательной части</label>
+                    <div class="col-8">
+                      <input class="form-control" type="search" value="{{ text }}" id="example-search-input" name="text"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <button type="submit" class="btn btn-success mr-2">Поиск</button>
+                </div>
+              </div>
+            </form>
+          <div class="py-3"></div>
+            {% if res_modul1_1 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 1_1
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul1_1 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul1_2 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 1_2
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul1_2 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul3 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 3
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul3 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul4_1 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 4_1
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul4_1 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul4_2 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 4_2
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul4_2 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul5 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 5
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul5 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul6 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 6
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul6 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul7 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 7
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul7 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+            {% if res_modul8 %}
+              <div class="card card-custom">
+                <div class="h4">
+                  Данные в модуле 8
+                </div>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">Дата</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for item in res_modul8 %}
+                    <tr>
+                      <td>{{ item }}</td>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+        <!--end::Search Form-->
+        <!--begin: Datatable_____________________________________________________________________________________________________________-->
+
+        <!--end: Datatable-->
+      </div>
+    </div>
+    <!--end::Card-->
+  </div>
+
+{% endblock %}
+{% block page_script %}
+
+{% endblock %}
