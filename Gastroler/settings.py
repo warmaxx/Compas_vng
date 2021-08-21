@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'phonebook',
     'news',
     'report_result',
+    'vng_info',
 ]
 
 MIDDLEWARE = [

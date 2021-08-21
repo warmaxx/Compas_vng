@@ -1,0 +1,229 @@
+{% load static %}
+<div class="card card-custom gutter-b card-stretch">
+  <!--begin::Beader-->
+  <div class="card-header py-5">
+    <h3 class="card-title font-weight-bolder">Статистика ВНГ</h3>
+
+  </div>
+  <!--end::Header-->
+  <!--begin::Body-->
+  <div class="card-body d-flex flex-column">
+    <!--begin::Stats-->
+    <div class="bg-white flex-grow-1">
+      <!--begin::Row-->
+
+      <form method="post">
+        <div class="form-group">
+          {% csrf_token %}
+          <label for="exampleSelect1">Выберите регион<span class="text-danger">*</span></label>
+          <select class="form-control" id="exampleSelect1" name="region_id">
+            {% for region in regions %}
+              <option {% if region.id == select_region_id %}selected{% endif %}
+                      value="{{ region.id }}">
+                {{ region.name }}
+              </option>
+            {% endfor %}
+          </select>
+          <div class="pt-3">
+            <button type="submit" class="btn btn-primary mr-2">Показать</button>
+          </div>
+
+        </div>
+      </form>
+      <!--end::Row-->
+      <!--begin::Row-->
+      {% if info != "" %}
+        <h5 class="card-title font-weight-bolder text-center pt-5">{{ select_region_name}}</h5>
+        <div class="separator separator-solid separator-border-2 separator-warning pt-3"></div>
+        <h5 class="card-title font-weight-bolder text-center pt-5">ТЭК:</h5>
+        <div class="row">
+
+          <div class="col">
+            <div class="font-size-sm text-muted font-weight-bold">Высокая</div>
+            <div class="font-size-h4 font-weight-bolder">{{ info.tek_high }}</div>
+          </div>
+          <div class="col">
+            <div class="font-size-sm text-muted font-weight-bold">Средняя</div>
+            <div class="font-size-h4 font-weight-bolder">{{ info.tek_mid }}</div>
+          </div>
+          <div class="col">
+            <div class="font-size-sm text-muted font-weight-bold">Низкая</div>
+            <div class="font-size-h4 font-weight-bolder">{{ info.tek_low }}</div>
+          </div>
+        </div>
+        <!--end::Row-->
+        <!--begin::Row-->
+        <div class="separator separator-solid separator-border-2 separator-primary pt-3"></div>
+        <h5 class="card-title font-weight-bolder text-center pt-5">ВО:</h5>
+        <div class="row row-cols-1">
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Подразделения охраны (всего)
+                - {{ info.vo_deps_foiv|add:info.vo_deps_ul|add:info.vo_deps_ul_special }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Ведомственная охрана
+                - {{ info.vo_deps_foiv|add:info.vo_deps_ul }} ({{ info.vo_deps_foiv }} - ФОИВ, {{ info.vo_deps_ul }} -
+                организаций)
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Юридические лица с особыми уставными задачами
+                - {{ info.vo_deps_ul_special }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="separator separator-dashed separator-border-2 separator-primary pt-3"></div>
+        <div class="row row-cols-1 pt-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Численность (список)
+                – {{ info.vo_pers_vo|add:info.vo_pers_special }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Ведомственная охрана – {{ info.vo_pers_vo }} </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Юридические лица с особыми уставными задачами
+                – {{ info.vo_pers_special }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="separator separator-dashed separator-border-2 separator-primary pt-3"></div>
+        <div class="row row-cols-1 pt-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Охраняется объектов (всего) –
+               {{ info.vo_obj_vo|add:info.vo_obj_special }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Ведомственная охрана – {{ info.vo_obj_vo }} </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Юридические лица с особыми уставными задачами
+                – {{ info.vo_obj_special }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="separator separator-dashed separator-border-2 separator-primary pt-3"></div>
+        <div class="row row-cols-1 pt-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Оружия у них (всего) –
+               {{ info.vo_guns_army|add:info.vo_guns_work|add:info.vo_guns_civil|add:info.vo_guns_study }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">боевого – {{ info.vo_guns_army }} </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">служебного
+                – {{ info.vo_guns_work }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">гражданского
+                – {{ info.vo_guns_civil }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">учебного
+                – {{ info.vo_guns_study }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="separator separator-solid separator-border-2 separator-primary pt-3"></div>
+        <h5 class="card-title font-weight-bolder text-center pt-5">Штатная численность:</h5>
+        <div class="row row-cols-1 pt-3">
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Количество подразделений КГ –
+               {{ count_deps_gk }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Отделов –
+               {{ count_deps_type_2 }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Отделений –
+               {{ count_deps_type_3 }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Групп –
+               {{ count_deps_type_4 }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Штатная численность –
+               {{ count_pers_plan }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Списочная численность –
+               {{ count_pers_fact }}</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="font-size-sm text-muted font-weight-bold"></div>
+              <div class="font-size-h6 font-weight-normal">Некомплект –
+               {{ count_pers_result }} ({{ count_pers_result_percent }} %) </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <!--end::Row-->
+
+    </div>
+
+    <!--end::Stats-->
+
+
+  </div>
+  <!--end::Body-->
+</div>

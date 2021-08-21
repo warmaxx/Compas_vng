@@ -11,11 +11,12 @@ DEPARTAMENT_TYPE = [
 
 
 class Departament(models.Model):
-    name = models.CharField('Полное название звания', max_length=100)
+    name = models.CharField('Полное название отдела', max_length=100)
     region = models.ForeignKey(Region, on_delete=models.PROTECT, blank=True, verbose_name='Регион')
     address = models.CharField('Адрес местонахождения отдела', max_length=100, blank=True)
     type = models.IntegerField('Тип подразделения', choices=DEPARTAMENT_TYPE)
     position = models.IntegerField('Порядковый номер', help_text='Чем меньше номер, тем выше в списке.')
+    count_employees = models.IntegerField('Количество по штату')
 
     def __str__(self):
         return str(self.name) + " | " + str(self.region)
