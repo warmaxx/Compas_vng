@@ -13,9 +13,82 @@
       <!--begin::Row-->
 
       <form method="post">
+        {% csrf_token %}
         <div class="form-group">
-          {% csrf_token %}
-          <label for="exampleSelect1">Выберите регион<span class="text-danger">*</span></label>
+
+          <div class="form-group m-0">
+            <label>Выберите глубину отчета:</label>
+            <div class="row">
+              <div class="col-lg-12">
+                <label class="option">
+      <span class="option-control">
+       <span class="radio">
+        <input type="radio" {% if select_stat == 1 %}checked="checked"{% endif %}name="select_stat" value="1" />
+        <span></span>
+       </span>
+      </span>
+                  <span class="option-label">
+       <span class="option-head">
+        <span class="option-title">
+         Россия
+        </span>
+       </span>
+       <span class="option-body">
+        Статистика по всей стране
+       </span>
+      </span>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <label class="option">
+      <span class="option-control">
+       <span class="radio">
+        <input type="radio" {% if select_stat == 2 %}checked="checked"{% endif %}name="select_stat" value="2"/>
+        <span></span>
+       </span>
+      </span>
+                  <span class="option-label">
+       <span class="option-head">
+        <span class="option-title">
+         Округ
+        </span>
+       </span>
+       <span class="option-body">
+        Статистика по выбранному федеральному округу
+         <select class="form-control" id="exampleSelect1" name="fed_region_id">
+            {% for fed_region in fed_regions %}
+              <option {% if fed_region.id == select_fed_region_id %}selected{% endif %}
+                      value="{{ fed_region.id }}">
+                {{ fed_region.name }}
+              </option>
+            {% endfor %}
+          </select>
+       </span>
+      </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+              <div class="col-lg-12">
+                <label class="option">
+      <span class="option-control">
+       <span class="radio">
+        <input type="radio" {% if select_stat == 3 %}checked="checked"{% endif %} name="select_stat" value="3"/>
+        <span></span>
+       </span>
+      </span>
+                  <span class="option-label">
+       <span class="option-head">
+        <span class="option-title">
+         Регион
+        </span>
+       </span>
+       <span class="option-body">
+        Статистика по выбранному региону
+
           <select class="form-control" id="exampleSelect1" name="region_id">
             {% for region in regions %}
               <option {% if region.id == select_region_id %}selected{% endif %}
@@ -24,16 +97,31 @@
               </option>
             {% endfor %}
           </select>
+       </span>
+      </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        {#          <label for="exampleSelect1">Выберите регион<span class="text-danger">*</span></label>#}
+        {#          <select class="form-control" id="exampleSelect1" name="region_id">#}
+        {#            {% for region in regions %}#}
+        {#              <option {% if region.id == select_region_id %}selected{% endif %}#}
+        {#                      value="{{ region.id }}">#}
+        {#                {{ region.name }}#}
+        {#              </option>#}
+        {#            {% endfor %}#}
+        {#          </select>#}
           <div class="pt-3">
             <button type="submit" class="btn btn-primary mr-2">Показать</button>
           </div>
 
-        </div>
+
       </form>
       <!--end::Row-->
       <!--begin::Row-->
       {% if info != "" %}
-        <h5 class="card-title font-weight-bolder text-center pt-5">{{ select_region_name}}</h5>
+        <h5 class="card-title font-weight-bolder text-center pt-5">{{ select_region_name }}{{ select_fed_region_name }}</h5>
         <div class="separator separator-solid separator-border-2 separator-warning pt-3"></div>
         <h5 class="card-title font-weight-bolder text-center pt-5">ТЭК:</h5>
         <div class="row">
@@ -109,7 +197,7 @@
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Охраняется объектов (всего) –
-               {{ info.vo_obj_vo|add:info.vo_obj_special }}</div>
+                {{ info.vo_obj_vo|add:info.vo_obj_special }}</div>
             </div>
           </div>
           <div class="row">
@@ -132,7 +220,7 @@
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Оружия у них (всего) –
-               {{ info.vo_guns_army|add:info.vo_guns_work|add:info.vo_guns_civil|add:info.vo_guns_study }}</div>
+                {{ info.vo_guns_army|add:info.vo_guns_work|add:info.vo_guns_civil|add:info.vo_guns_study }}</div>
             </div>
           </div>
           <div class="row">
@@ -169,50 +257,51 @@
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
-              <div class="font-size-h6 font-weight-normal">Количество подразделений КГ –
-               {{ count_deps_gk }}</div>
+              <div class="font-size-h6 font-weight-normal">Количество подразделений ГК –
+                {{ count_deps_gk }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Отделов –
-               {{ count_deps_type_2 }}</div>
+                {{ count_deps_type_2 }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Отделений –
-               {{ count_deps_type_3 }}</div>
+                {{ count_deps_type_3 }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Групп –
-               {{ count_deps_type_4 }}</div>
+                {{ count_deps_type_4 }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Штатная численность –
-               {{ count_pers_plan }}</div>
+                {{ count_pers_plan }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Списочная численность –
-               {{ count_pers_fact }}</div>
+                {{ count_pers_fact }}</div>
             </div>
           </div>
           <div class="row">
             <div class="col-12">
               <div class="font-size-sm text-muted font-weight-bold"></div>
               <div class="font-size-h6 font-weight-normal">Некомплект –
-               {{ count_pers_result }} ({{ count_pers_result_percent }} %) </div>
+                {{ count_pers_result }} ({{ count_pers_result_percent }} %)
+              </div>
             </div>
           </div>
         </div>
