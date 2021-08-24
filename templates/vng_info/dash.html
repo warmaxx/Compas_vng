@@ -55,7 +55,7 @@
        </span>
        <span class="option-body">
         Статистика по выбранному федеральному округу
-         <select class="form-control" id="exampleSelect1" name="fed_region_id">
+         <select class="form-control select2" id="kt_select2_1" name="fed_region_id">
             {% for fed_region in fed_regions %}
               <option {% if fed_region.id == select_fed_region_id %}selected{% endif %}
                       value="{{ fed_region.id }}">
@@ -87,7 +87,7 @@
        <span class="option-body">
         Статистика по выбранному региону
 
-          <select class="form-control" id="exampleSelect1" name="region_id">
+          <select class="form-control select2" id="kt_select2_2" name="region_id">
             {% for region in regions %}
               <option {% if region.id == select_region_id %}selected{% endif %}
                       value="{{ region.id }}">
