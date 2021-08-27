@@ -24,6 +24,7 @@ urlpatterns = [
     path('auth/', include('django.contrib.auth.urls')),
     path('', views.index, name='index'),
     path('vng_stat/', include('vng_stat.urls'), name='vng_stat'),
+    path('vng_info/', include('vng_info.urls'), name='vng_info'),
     path('vng_incidents/', include('vng_incidents.urls'), name='vng_incidents'),
     path('phonebook/', include('phonebook.urls'), name='phonebook'),
     path('report_result/', include('report_result.urls'), name='report_result'),

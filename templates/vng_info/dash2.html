@@ -1,0 +1,177 @@
+{% load static %}
+<div class="card card-custom gutter-b">
+  <!--begin::Beader-->
+  <div class="card-header py-5">
+    <h3 class="card-title font-weight-bolder">Штатка по России</h3>
+  </div>
+  <div class="card-body">
+    <div class="row row-cols-1 pt-3">
+      <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Подразделений ГК
+            </div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_deps_gk }}</span>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Отделов</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_deps_type_2 }}</span>
+        </div>
+      </div>
+      {% if count_deps_type_3 != 0 %}
+        <div class="col-12">
+          <div class="d-flex align-items-center flex-wrap mb-2">
+            <!--begin::Text-->
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Отделений</div>
+            </div>
+            <!--end::Text-->
+            <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_deps_type_3 }}</span>
+          </div>
+        </div>
+      {% endif %}
+      {% if count_deps_type_4 != 0 %}
+        <div class="col-12">
+          <div class="d-flex align-items-center flex-wrap mb-2">
+            <!--begin::Text-->
+            <div class="d-flex flex-column flex-grow-1 mr-2">
+              <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Групп</div>
+            </div>
+            <!--end::Text-->
+            <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_deps_type_4 }}</span>
+          </div>
+        </div>
+      {% endif %}
+      <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Штатная численность
+            </div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_plan }}</span>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Списочная
+              численность
+            </div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-lg label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_fact }}</span>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Некомплект</div>
+            <span class="text-muted font-weight-bold">{{ count_pers_result }}</span>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_result_percent }} %</span>
+        </div>
+      </div>
+      {% if count_pers_work != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">На службе</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_work }}</span>
+        </div>
+      </div>
+      {% endif %}
+      {% if count_pers_ill != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Болен</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_ill }}</span>
+        </div>
+      </div>
+      {% endif %}
+      {% if count_pers_travel != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Коммандировка</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_travel }}</span>
+        </div>
+      </div> {% endif %}
+    {% if count_pers_holiday != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Отпуск</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_holiday }}</span>
+        </div>
+      </div>
+    {% endif %}
+    {% if count_pers_pregnant != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Декрет</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_pregnant }}</span>
+        </div>
+      </div>{% endif %}
+      {% if count_pers_study != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Учеба</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_study }}</span>
+        </div>
+      </div>
+      {% endif %}
+    {% if count_pers_foreign != 0 %}
+    <div class="col-12">
+        <div class="d-flex align-items-center flex-wrap mb-2">
+          <!--begin::Text-->
+          <div class="d-flex flex-column flex-grow-1 mr-2">
+            <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-sm mb-1">Откоммандирован</div>
+          </div>
+          <!--end::Text-->
+          <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-normal">{{ count_pers_foreign }}</span>
+        </div>
+      </div>
+      {% endif %}
+      <div class="col-12 pt-5">
+        <a class="btn btn-outline-primary col-12" href="{% url 'vng_info:pers' %}">Подробнее</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -197,6 +197,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 						title: 'Статус',
 						width: 100,
 						// callback function support for column rendering
+						//При добавлении нового типа поменять в файле модели Статуса
 						template: function(row) {
 							var status = {
 								0: {'title': 'На службе', 'class': 'btn-success'},
@@ -204,9 +205,9 @@ var KTDatatableChildRemoteDataDemo = function() {
 								2: {'title': 'Коммандировка', 'class': 'btn-primary'},
 								3: {'title': 'Отпуск', 'class': 'btn-primary'},
 								4: {'title': 'Декрет', 'class': 'btn-info'},
-								5: {'title': 'Уволен', 'class': 'btn-info'},
-								6: {'title': 'Пенсия', 'class': 'btn-secondary'},
-								7: {'title': 'Переведен', 'class': 'btn-secondary'},
+								5: {'title': 'Учёба', 'class': 'btn-info'},
+								6: {'title': 'Откоммандирован', 'class': 'btn-secondary'},
+
 							};
 							return '<div class="dropdown">\n' +
 								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
@@ -219,11 +220,9 @@ var KTDatatableChildRemoteDataDemo = function() {
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/2/">Коммандировка</a>\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/3/">Отпуск</a>\n' +
 								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/4/">Декрет</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/5/">Уволен</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/6/">Пенсия</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/7/">Переведен</a>\n' +
+								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/5/">Учёба</a>\n' +
+								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/6/">Откоммандирован</a>\n' +
 								'    </div>\n' +
-
 								'</div>';
 						},
 					},
