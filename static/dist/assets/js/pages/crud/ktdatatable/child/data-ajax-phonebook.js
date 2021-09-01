@@ -213,16 +213,16 @@ var KTDatatableChildRemoteDataDemo = function() {
 								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
 								status[row.status].title +
 								'    </button>\n' +
-								//При добавлении нового типа поменять в файле модели Статуса
-								'    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/0/">На службе</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/1/">Болен</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/2/">Коммандировка</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/3/">Отпуск</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/4/">Декрет</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/5/">Учёба</a>\n' +
-								'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/6/">Откоммандирован</a>\n' +
-								'    </div>\n' +
+							// 	//При добавлении нового типа поменять в файле модели Статуса
+							// 	'    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/0/">На службе</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/1/">Болен</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/2/">Коммандировка</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/3/">Отпуск</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/4/">Декрет</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/5/">Учёба</a>\n' +
+							// 	'        <a class="dropdown-item" href="/phonebook/change_status/'+row.RecordID+'/6/">Откоммандирован</a>\n' +
+							// 	'    </div>\n' +
 								'</div>';
 						},
 					},
