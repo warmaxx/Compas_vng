@@ -209,8 +209,8 @@ var KTDatatableChildRemoteDataDemo = function() {
 								6: {'title': 'Откоммандирован', 'class': 'btn-secondary'},
 
 							};
-							return '<div class="dropdown">\n' +
-								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
+							return '<div class="">\n' +
+								'    <button class="btn '+ status[row.status].class +' font-weight-bold btn-sm" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
 								status[row.status].title +
 								'    </button>\n' +
 							// 	//При добавлении нового типа поменять в файле модели Статуса
