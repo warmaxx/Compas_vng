@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Система ГК ВНГ РФ{% endblock %}
-{% block header %}Система ГК ВНГ РФ{% endblock %}
+{% block title %}ИС Компас | Рабочий стол{% endblock %}
+{% block header %}Рабочий стол{% endblock %}
 {% block container %}
   <div class="container col-10">
     <!--begin::Dashboard-->
@@ -11,6 +11,7 @@
       <div class="col-xl-2">
         {% include 'phonebook/dash.html' %}
         {% include 'result_report/dash.html' %}
+        {% include 'vng_docs/dash.html' %}
         {% include 'vng_info/dash2.html' %}
       </div>
       <div class="col-xl-4">

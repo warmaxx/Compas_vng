@@ -1,6 +1,7 @@
 {% extends "base.html" %}
+{% load user_filters %}
 {% load static %}
-{% block title %}Система ГК ВНГ РФ{% endblock %}
+{% block title %}ИС Компас | Телефонный справочник{% endblock %}
 {% block header %}Телефонный справочник{% endblock %}
 {% block container %}
   <div class="container col-10">
@@ -34,40 +35,121 @@
           <div class="row align-items-center">
             <div class="col-lg-6 col-xl-6">
               <div class="row align-items-center">
-                <div class="col-md-4 my-2 my-md-0">
-                  <div class="input-icon">
-                    <input type="text" class="form-control" placeholder="Поиск..." id="kt_datatable_search_query"/>
-                    <span>
-                      <i class="flaticon2-search-1 text-muted"></i>
-                    </span>
+
+                <form method="post" action="">
+                  <div class="row align-items-center">
+                    {% csrf_token %}
+                    <div class="col-xl-9">
+                      <div class="input-icon">
+                        <input type="text" class="form-control" placeholder="Поиск по фамилии" id="" name="search_name"
+                               {% if search_name %}value="{{ search_name }}"{% endif %}/>
+                        <span>
+                        <i class="flaticon2-search-1 text-muted"></i>
+                      </span>
+                      </div>
+                    </div>
+                    <div class="col-xl-3">
+                      <button class="btn btn-outline-primary" type="submit">Найти</button>
+                    </div>
                   </div>
-                </div>
+                </form>
+
 
               </div>
             </div>
             <div class="col-lg-6 col-xl-6">
-             {% if user.is_authenticated %}
-              <div class="row align-items-right">
-                <div class="col-md-3 my-2 my-md-0">
-                  <a href="mailto:{{ all_emails }}" class="btn btn-outline-primary">
-                    <i class="fas fa-mail-bulk icon-lg"></i> Написать всем
-                  </a>
+              {% if user.is_authenticated %}
+                <div class="row align-items-right">
+                  <div class="col-md-3 my-2 my-md-0">
+                    <a href="mailto:{{ all_emails }}" class="btn btn-outline-primary">
+                      <i class="fas fa-mail-bulk icon-lg"></i> Написать всем
+                    </a>
+                  </div>
+                  <div class="col-md-4 my-2 my-md-0">
+                    <a href="mailto:{{ distinct_emails }}" class="btn btn-outline-info">
+                      <i class="fas fa-mail-bulk icon-lg"></i> Написать всем округам
+                    </a>
+                  </div>
+                  <div class="col-md-5 my-2 my-md-0">
+                    <a href="mailto:{{ all_ground_emails }}" class="btn btn-outline-success">
+                      <i class="fas fa-mail-bulk icon-lg"></i> Написать всем в терр. органы
+                    </a>
+                  </div>
                 </div>
-                <div class="col-md-4 my-2 my-md-0">
-                  <a href="mailto:{{ distinct_emails }}" class="btn btn-outline-info">
-                    <i class="fas fa-mail-bulk icon-lg"></i> Написать всем округам
-                  </a>
-                </div>
-                <div class="col-md-5 my-2 my-md-0">
-                  <a href="mailto:{{ all_ground_emails }}" class="btn btn-outline-success">
-                    <i class="fas fa-mail-bulk icon-lg"></i> Написать всем в терр. органы
-                  </a>
-                </div>
-              </div>
               {% endif %}
             </div>
           </div>
         </div>
+        {% if persons %}
+          <div class="card card-custom card-border border-2">
+            <div class="card-header border-0">
+              <div class="card-title">
+            <span class="card-icon">
+                <i class="flaticon2-chat-1"></i>
+            </span>
+                <h3 class="card-label">
+                  Результат поиска
+                </h3>
+              </div>
+
+            </div>
+            <div class="separator separator-solid separator-white opacity-20"></div>
+            <div class="card-body">
+
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Регион</th>
+                  <th scope="col">Отдел</th>
+                  <th scope="col">Должность</th>
+                  <th scope="col">Звание</th>
+                  <th scope="col">ФИО</th>
+                  <th scope="col">Раб. телефон</th>
+                  <th scope="col">Моб. телефон</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Время</th>
+                  <th scope="col">Статус</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for person in persons %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ person.departament.region.name }}</td>
+                    <td>{{ person.departament.name }}</td>
+                    <td>{{ person.job.short_name }}</td>
+                    <td>{{ person.rank.short_name }}</td>
+                    <td>{{ person.sur_name }} {{ person.name }} {{ person.patronymic }}</td>
+                    <td>{{ person.work_phone }}</td>
+                    <td>{{ person.cell_phone }}</td>
+                    <td>{{ person.email }}</td>
+                    <td>{{ person.departament.region.timezone|now_time }}</td>
+{#                    <td>{{ now_h|add:person.departament.region.timezone }}:{{ now_m }}</td>#}
+                    <td>
+                      {% if person.status == 0 %}
+                        На службе
+                      {% elif person.status == 1 %}
+                        Болен
+                      {% elif person.status == 2 %}
+                        Коммандировка
+                      {% elif person.status == 3 %}
+                        Отпуск
+                      {% elif person.status == 4 %}
+                        Декрет
+                      {% elif person.status == 5 %}
+                        Учёба
+                      {% elif person.status == 6 %}
+                        Откоммандирован
+                      {% endif %}
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        {% endif %}
         <!--end::Search Form-->
         <!--begin: Datatable_____________________________________________________________________________________________________________-->
         <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>

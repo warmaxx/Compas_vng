@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Contact, Departament
 from homepage.models import FedRegion, Region, Job, Rank, STATUS_CONTACT_CHOICES
 from django.http import JsonResponse
+from datetime import datetime as dt
 
 
 def index(request):
@@ -12,7 +13,12 @@ def index(request):
     jobs = Job.objects.all()
     ranks = Rank.objects.all()
     deps = Departament.objects.all()
-
+    now = dt.utcnow()
+    persons = False
+    search_name = ''
+    if request.POST.get('search_name'):
+        search_name = request.POST.get('search_name')
+        persons = contacts.filter(sur_name__icontains=search_name)
     delim = ";"
     distinct_emails = ''
     all_emails = ''
@@ -39,6 +45,10 @@ def index(request):
         'distinct_emails': distinct_emails,
         'all_emails': all_emails,
         'all_ground_emails': all_ground_emails,
+        'search_name': search_name,
+        'persons': persons,
+        'now_h': now.hour,
+        'now_m': now.minute,
     }
     return render(request, 'phonebook/index.html', context)
 

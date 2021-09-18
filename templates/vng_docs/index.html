@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}ИС Компас | Штатка по регионам{% endblock %}
+{% block header %}Шаблоны документов{% endblock %}
+{% block page_css %}
+  <link href="{% static 'dist/assets/plugins/custom/datatables/datatables.bundle.css' %}" rel="stylesheet"
+        type="text/css"/>
+{% endblock %}
+{% block container %}
+  <div class="container col-10">
+    <div class="row">
+      <div class="col-xl-3">
+        <div class="card card-custom">
+          <!--begin::Beader-->
+          <div class="card-header py-5">
+            <h3 class="card-title font-weight-bolder">Выберите раздел</h3>
+          </div>
+          <!--end::Header-->
+          <!--begin::Body-->
+          <div class="card-body d-flex flex-column">
+            <!--begin::Stats-->
+            <a type="button" class="btn btn-info btn-lg btn-block"
+                 href="{% url 'vng_docs:index'%}">Все разделы</a>
+            {% for folder in folders %}
+              <a type="button" class="btn btn-outline-primary btn-lg btn-block"
+                 href="{% url 'vng_docs:folder' folder.id %}">{{ folder.name }}</a>
+            {% endfor %}
+            <!--end::Stats-->
+          </div>
+          <!--end::Body-->
+        </div>
+      </div>
+      <div class="col-xl-9">
+        <div class="row">
+          {% for file in files %}
+
+            <div class="col-lg-4">
+              <!--begin::Card-->
+              <div class="card card-custom card-stretch">
+                <div class="card-header">
+                  <div class="card-title">
+                    <h3 class="card-label"><a href="{{ file.doc.url }}" target="_blank">{{ file.name }}</a></h3>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="overlay-wrapper">
+                    <img src="{{file.image.url }}" alt="" class="w-100 rounded">
+                  </div>
+
+                </div>
+              </div>
+              <!--end::Card-->
+            </div>
+
+
+
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block page_script %}
+  <script src="{% static 'dist/assets/js/pages/crud/forms/widgets/select2.js' %}"></script>
+{% endblock %}

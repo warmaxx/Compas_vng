@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'news',
     'report_result',
     'vng_info',
+    'vng_docs',
 ]
 
 MIDDLEWARE = [

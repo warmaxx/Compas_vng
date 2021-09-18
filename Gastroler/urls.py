@@ -28,7 +28,8 @@ urlpatterns = [
     path('vng_incidents/', include('vng_incidents.urls'), name='vng_incidents'),
     path('phonebook/', include('phonebook.urls'), name='phonebook'),
     path('report_result/', include('report_result.urls'), name='report_result'),
-    #Admin pages
+    path('vng_docs/', include('vng_docs.urls'), name='vng_docs'),
+    # Admin pages
     path('admin/', admin.site.urls, name='admin'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
