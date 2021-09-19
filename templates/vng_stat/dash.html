@@ -27,16 +27,55 @@
       <div class="row row-paddingless">
 
         <div class="col">
-          <div class="font-size-sm text-muted font-weight-bold">Высокая</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_high }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/tek_high.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Высокая</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_high }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
         <div class="col">
-          <div class="font-size-sm text-muted font-weight-bold">Средняя</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_medium }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/tek_mid.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Средняя</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_medium }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
         <div class="col">
-          <div class="font-size-sm text-muted font-weight-bold">Низкая</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_low }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/tek_low.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Низкая</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_low }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
       </div>
       <!--end::Row-->
@@ -44,7 +83,8 @@
     </div>
     <div class="row pt-5">
       <div class="col-xl-6">
-        <a href="{% url 'vng_stat:index' %}" class="btn btn-success btn-shadow-hover font-weight-bolder w-100 py-3">План проверок</a>
+        <a href="{% url 'vng_stat:index' %}" class="btn btn-success btn-shadow-hover font-weight-bolder w-100 py-3">План
+          проверок</a>
       </div>
       <div class="col-xl-6">
         <a href="{% url 'vng_stat:stat' %}" class="btn btn-success btn-shadow-hover font-weight-bolder w-100 py-3">Статистика</a>
