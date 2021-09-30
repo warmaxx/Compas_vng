@@ -2,7 +2,7 @@
 <div class="card card-custom gutter-b card-stretch">
   <!--begin::Beader-->
   <div class="card-header py-5">
-    <h3 class="card-title font-weight-bolder">Проверка ТЭК</h3>
+    <h3 class="card-title font-weight-bolder">Количество проверенных объектов ТЭК в соответсвии с планом проверок на 2021 год</h3>
 
   </div>
   <!--end::Header-->
@@ -13,12 +13,38 @@
       <!--begin::Row-->
       <div class="row row-paddingless">
         <div class="col mr-8">
-          <div class="font-size-sm text-muted font-weight-bold">Субъектов</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_ul }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/tek_subjects.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Субъектов</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_ul }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
         <div class="col">
-          <div class="font-size-sm text-muted font-weight-bold">Объектов ТЭК</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_all }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/tek_objects.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Объектов ТЭК</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_all }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
       </div>
       <!--end::Row-->

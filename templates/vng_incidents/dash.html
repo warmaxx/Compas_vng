@@ -13,12 +13,38 @@
       <!--begin::Row-->
       <div class="row row-paddingless">
         <div class="col mr-8">
-          <div class="font-size-sm text-muted font-weight-bold">Всего за год</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_now_year }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/inc_year.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">Всего за год</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_now_year }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
         <div class="col">
-          <div class="font-size-sm text-muted font-weight-bold">За последние сутки</div>
-          <div class="font-size-h4 font-weight-bolder">{{ count_last_day }}</div>
+          <div class="d-flex align-items-center mr-2">
+            <!--begin::Symbol-->
+            <div class="symbol symbol-45 mr-4 flex-shrink-0">
+              <div class="symbol-label">
+                <img src="/static/src/media/svg/icons/vng_info/inc_day.svg" class="h-50 align-self-center" alt="">
+              </div>
+            </div>
+            <!--end::Symbol-->
+            <!--begin::Title-->
+            <div>
+              <div class="font-size-sm text-muted font-weight-bold">За последние сутки</div>
+              <div class="font-size-h4 font-weight-bolder">{{ count_last_day }}</div>
+            </div>
+            <!--end::Title-->
+          </div>
         </div>
       </div>
       <!--end::Row-->
