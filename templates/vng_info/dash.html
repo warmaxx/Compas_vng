@@ -137,7 +137,7 @@
             <!--begin::Title-->
             <div>
               <div class="font-size-sm text-muted font-weight-bold">Высокая</div>
-              <div class="font-size-h4 font-weight-bolder">{{ info.tek_high }}</div>
+              <div class="font-size-h4 font-weight-bolder">{% if info.tek_high is not None %}{{ info.tek_high }}{% else %}0{% endif %}</div>
             </div>
             <!--end::Title-->
           </div>
@@ -154,7 +154,7 @@
             <!--begin::Title-->
             <div>
               <div class="font-size-sm text-muted font-weight-bold">Средняя</div>
-              <div class="font-size-h4 font-weight-bolder">{{ info.tek_mid }}</div>
+              <div class="font-size-h4 font-weight-bolder">{% if info.tek_mid is not None %}{{ info.tek_mid }}{% else %}0{% endif %}</div>
             </div>
             <!--end::Title-->
           </div>
@@ -171,7 +171,7 @@
             <!--begin::Title-->
             <div>
               <div class="font-size-sm text-muted font-weight-bold">Низкая</div>
-              <div class="font-size-h4 font-weight-bolder">{{ info.tek_low }}</div>
+              <div class="font-size-h4 font-weight-bolder">{% if info.tek_low is not None %}{{ info.tek_low }}{% else %}0{% endif %}</div>
             </div>
             <!--end::Title-->
           </div>
@@ -218,7 +218,7 @@
                 <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Ведомственная
                   охрана
                 </div>
-                <span class="text-muted font-weight-bold">({{ info.vo_deps_foiv }} - ФОИВ, {{ info.vo_deps_ul }} -
+                <span class="text-muted font-weight-bold">{% if info.vo_deps_foiv is not None %}({{ info.vo_deps_foiv }}{% else %}0{% endif %} - ФОИВ, {% if info.vo_deps_ul is not None %}{{ info.vo_deps_ul }}{% else %}0{% endif %} -
               организаций)</span>
               </div>
               <!--end::Text-->
@@ -242,7 +242,7 @@
                 <span class="text-muted font-weight-bold">с особыми уставными задачами</span>
               </div>
               <!--end::Text-->
-              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_deps_ul_special }}</span>
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_deps_ul_special is not None %}{{ info.vo_deps_ul_special }}{% else %}0{% endif %}</span>
             </div>
           </div>
         </div>
@@ -283,7 +283,7 @@
                   охрана</div>
               </div>
               <!--end::Text-->
-              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_pers_vo }}</span>
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_pers_vo is not None %}{{ info.vo_pers_vo }}{% else %}0{% endif %}</span>
             </div>
           </div>
           <div class="col-12">
@@ -303,7 +303,7 @@
                 <span class="text-muted font-weight-bold">с особыми уставными задачами</span>
               </div>
               <!--end::Text-->
-              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_pers_special }}</span>
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_pers_special is not None %}{{ info.vo_pers_special }}{% else %}0{% endif %}</span>
             </div>
           </div>
 
@@ -342,7 +342,7 @@
 														<div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Ведомственная охрана</div>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_obj_vo }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_obj_vo is not None %}{{ info.vo_obj_vo }}{% else %}0{% endif %}</span>
 												</div>
             </div>
             <div class="col-12">
@@ -360,7 +360,7 @@
 														<span class="text-muted font-weight-bold">с особыми уставными задачами</span>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_obj_special }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_obj_special is not None %}{{ info.vo_obj_special }}{% else %}0{% endif %}</span>
 												</div>
             </div>
         </div>
@@ -398,7 +398,7 @@
 														<div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Боевого</div>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_guns_army }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_guns_army is not None %}{{ info.vo_guns_army }}{% else %}0{% endif %}</span>
 												</div>
             </div>
             <div class="col-12">
@@ -415,7 +415,7 @@
 														<div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Служебного</div>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_guns_work }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_guns_work is not None %}{{ info.vo_guns_work }}{% else %}0{% endif %}</span>
 												</div>
             </div>
             <div class="col-12">
@@ -432,7 +432,7 @@
 														<div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Гражданского</div>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_guns_civil }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_guns_civil is not None %}{{ info.vo_guns_civil }}{% else %}0{% endif %}</span>
 												</div>
             </div>
             <div class="col-12">
@@ -449,7 +449,7 @@
 														<div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Учебного</div>
 													</div>
 													<!--end::Text-->
-													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_guns_study }}</span>
+													<span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{% if info.vo_guns_study is not None %}{{ info.vo_guns_study }}{% else %}0{% endif %}</span>
 												</div>
             </div>
         </div>

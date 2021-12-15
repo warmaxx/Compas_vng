@@ -3,7 +3,17 @@ from django.contrib import admin
 # Register your models here.
 from .models import Contact, Rank, Job, Departament
 
-admin.site.register(Contact)
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = (
+        "sur_name", "name", "patronymic", "departament", "job", "rank", "work_phone", "cell_phone", "email", "status")
+    search_fields = (
+        "sur_name", "name", "patronymic", "departament", "job", "rank", "work_phone", "cell_phone", "email", "status")
+    list_filter = ("departament", "job", "rank", "status")
+    empty_value_display = "-пусто-"
+
+
+admin.site.register(Contact, ContactAdmin)
 admin.site.register(Rank)
 admin.site.register(Job)
 admin.site.register(Departament)

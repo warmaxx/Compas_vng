@@ -61,15 +61,20 @@ def index(request):
     count_pers_plan = Departament.objects.filter(type__in=(2, 3, 4)).aggregate(
         count_employees__sum=Sum('count_employees'))
     count_pers_plan = count_pers_plan['count_employees__sum']
+    if count_pers_plan is None:
+        count_pers_plan = 0
     count_pers_fact = Contact.objects.filter(departament__type__in=(2, 3, 4)).count()
     count_pers_result = count_pers_plan - count_pers_fact
-    count_pers_result_percent = round(
-        ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
+    try:
+        count_pers_result_percent = round(
+            ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
+    except ZeroDivisionError:
+        count_pers_result_percent = 0
     if request.method == 'POST':
         try:
             select_stat = request.POST.get('select_stat')
-            if select_stat == None:
-                select_stat =0
+            if select_stat is None:
+                select_stat = 0
             if int(select_stat) == 1:
                 select_fed_region_name = 'Россия'
                 info = TekInfo.objects.aggregate(
@@ -81,15 +86,12 @@ def index(request):
                     vo_guns_army=Sum('vo_guns_army'), vo_guns_work=Sum('vo_guns_work'),
                     vo_guns_civil=Sum('vo_guns_civil'), vo_guns_study=Sum('vo_guns_study'),
                 )
-
             if int(select_stat) == 2:
-
                 try:
                     select_fed_region_id = request.POST.get('fed_region_id')
                     select_fed_region_name = FedRegion.objects.filter(id=select_fed_region_id).values_list('name',
                                                                                                            flat=True)
                     select_fed_region_name = select_fed_region_name[0]
-
                     info = TekInfo.objects.filter(region__fedname_id=select_fed_region_id).aggregate(
                         tek_high=Sum('tek_high'), tek_mid=Sum('tek_mid'), tek_low=Sum('tek_low'),
                         vo_deps_foiv=Sum('vo_deps_foiv'), vo_deps_ul=Sum('vo_deps_ul'),
@@ -99,27 +101,6 @@ def index(request):
                         vo_guns_army=Sum('vo_guns_army'), vo_guns_work=Sum('vo_guns_work'),
                         vo_guns_civil=Sum('vo_guns_civil'), vo_guns_study=Sum('vo_guns_study'),
                     )
-
-                    # count_deps_gk = Departament.objects.filter(region__fedname_id=select_fed_region_id).filter(
-                    #     type__in=(2, 3, 4)).count()
-                    #
-                    # count_deps_type_2 = Departament.objects.filter(region__fedname_id=select_fed_region_id).filter(
-                    #     type=2).count()
-                    # count_deps_type_3 = Departament.objects.filter(region__fedname_id=select_fed_region_id).filter(
-                    #     type=3).count()
-                    # count_deps_type_4 = Departament.objects.filter(region__fedname_id=select_fed_region_id).filter(
-                    #     type=4).count()
-                    # count_pers_plan = Departament.objects.filter(
-                    #     region__fedname_id=select_fed_region_id).filter(
-                    #     type__in=(2, 3, 4)).aggregate(
-                    #     count_employees__sum=Sum('count_employees'))
-                    # count_pers_plan = count_pers_plan['count_employees__sum']
-                    # count_pers_fact = Contact.objects.filter(
-                    #     departament__region__fedname_id=select_fed_region_id).filter(
-                    #     departament__type__in=(2, 3, 4)).count()
-                    # count_pers_result = count_pers_plan - count_pers_fact
-                    # count_pers_result_percent = round(
-                    #     ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
                 except Exception as e:
                     print(e)
                     info = ''
@@ -129,20 +110,6 @@ def index(request):
                 select_region_name = select_region_name[0]
                 try:
                     info = TekInfo.objects.get(region=select_region_id)
-                    # count_deps_gk = Departament.objects.filter(region=select_region_id).filter(
-                    #     type__in=(2, 3, 4)).count()
-                    # count_deps_type_2 = Departament.objects.filter(region=select_region_id).filter(type=2).count()
-                    # count_deps_type_3 = Departament.objects.filter(region=select_region_id).filter(type=3).count()
-                    # count_deps_type_4 = Departament.objects.filter(region=select_region_id).filter(type=4).count()
-                    # count_pers_plan = Departament.objects.values('region').filter(region=select_region_id).filter(
-                    #     type__in=(2, 3, 4)).annotate(
-                    #     Sum('count_employees'))
-                    # count_pers_plan = count_pers_plan[0]['count_employees__sum']
-                    # count_pers_fact = Contact.objects.filter(departament__region=select_region_id).filter(
-                    #     departament__type__in=(2, 3, 4)).count()
-                    # count_pers_result = count_pers_plan - count_pers_fact
-                    # count_pers_result_percent = round(
-                    #     ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
                 except Exception as e:
                     info = ''
                     print(e)

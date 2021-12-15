@@ -30,9 +30,9 @@ def pers(request):
     count_pers_ill = ''
     count_pers_travel = ''
     count_pers_holiday = ''
-    count_pers_pregnant =''
-    count_pers_study=''
-    count_pers_foreign=''
+    count_pers_pregnant = ''
+    count_pers_study = ''
+    count_pers_foreign = ''
 
     if request.method == 'POST':
         try:
@@ -51,9 +51,14 @@ def pers(request):
                     count_employees__sum=Sum('count_employees'))
                 count_pers_plan = count_pers_plan['count_employees__sum']
                 count_pers_fact = Contact.objects.filter(departament__type__in=(2, 3, 4)).count()
+                if count_pers_plan is None:
+                    count_pers_plan = 0
                 count_pers_result = count_pers_plan - count_pers_fact
-                count_pers_result_percent = round(
-                    ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
+                try:
+                    count_pers_result_percent = round(
+                        ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
+                except ZeroDivisionError:
+                    count_pers_result_percent = 0
                 count_pers_work = Contact.objects.filter(status=0).count()
                 count_pers_ill = Contact.objects.filter(status=1).count()
                 count_pers_travel = Contact.objects.filter(status=2).count()
@@ -128,13 +133,20 @@ def pers(request):
                     count_pers_result = count_pers_plan - count_pers_fact
                     count_pers_result_percent = round(
                         ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
-                    count_pers_work = Contact.objects.filter(status=0).filter(departament__region=select_region_id).count()
-                    count_pers_ill = Contact.objects.filter(status=1).filter(departament__region=select_region_id).count()
-                    count_pers_travel = Contact.objects.filter(status=2).filter(departament__region=select_region_id).count()
-                    count_pers_holiday = Contact.objects.filter(status=3).filter(departament__region=select_region_id).count()
-                    count_pers_pregnant = Contact.objects.filter(status=4).filter(departament__region=select_region_id).count()
-                    count_pers_study = Contact.objects.filter(status=5).filter(departament__region=select_region_id).count()
-                    count_pers_foreign = Contact.objects.filter(status=6).filter(departament__region=select_region_id).count()
+                    count_pers_work = Contact.objects.filter(status=0).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_ill = Contact.objects.filter(status=1).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_travel = Contact.objects.filter(status=2).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_holiday = Contact.objects.filter(status=3).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_pregnant = Contact.objects.filter(status=4).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_study = Contact.objects.filter(status=5).filter(
+                        departament__region=select_region_id).count()
+                    count_pers_foreign = Contact.objects.filter(status=6).filter(
+                        departament__region=select_region_id).count()
                 except Exception as e:
                     info = ''
                     print(e)
@@ -163,9 +175,9 @@ def pers(request):
         'count_pers_ill': count_pers_ill,
         'count_pers_travel': count_pers_travel,
         'count_pers_holiday': count_pers_holiday,
-        'count_pers_pregnant':count_pers_pregnant,
-        'count_pers_study':count_pers_study,
-        'count_pers_foreign':count_pers_foreign,
+        'count_pers_pregnant': count_pers_pregnant,
+        'count_pers_study': count_pers_study,
+        'count_pers_foreign': count_pers_foreign,
 
     }
     return render(request, 'vng_info/index.html', context)
