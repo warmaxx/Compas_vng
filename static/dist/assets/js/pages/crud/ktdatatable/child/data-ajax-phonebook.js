@@ -173,7 +173,7 @@ var KTDatatableChildRemoteDataDemo = function() {
 					}, {
 						field: 'email',
 						title: 'email',
-						width: 160,
+						width: 180,
 						template: function (row){
 							return '<a href="mailto:'+row.email+'">'+row.email+'</a>'
 						}
