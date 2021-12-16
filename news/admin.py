@@ -9,4 +9,4 @@ class NewsAdmin(admin.ModelAdmin):
     empty_value_display = "-пусто-"
 
 
-admin.site.register(News)
+admin.site.register(News,NewsAdmin)
