@@ -18,7 +18,19 @@ class DepartamentAdmin(admin.ModelAdmin):
     empty_value_display = "-пусто-"
 
 
+class RankAdmin(admin.ModelAdmin):
+    list_display = ("full_name", "short_name", "position", )
+    search_fields = ("full_name", "short_name",)
+    empty_value_display = "-пусто-"
+
+
+class JobAdmin(admin.ModelAdmin):
+    list_display = ("full_name", "short_name", "position", )
+    search_fields = ("full_name", "short_name",)
+    empty_value_display = "-пусто-"
+
+
 admin.site.register(Contact, ContactAdmin)
-admin.site.register(Rank)
-admin.site.register(Job)
+admin.site.register(Rank, RankAdmin)
+admin.site.register(Job, JobAdmin)
 admin.site.register(Departament, DepartamentAdmin)
