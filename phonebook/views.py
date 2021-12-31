@@ -23,15 +23,15 @@ def index(request):
     distinct_emails = ''
     all_emails = ''
     all_ground_emails = ''
-    email_list = list(Contact.objects.filter(departament__type=1).values_list('email', flat=True))
+    email_list = list(Contact.objects.filter(departament__type=1, status=0).values_list('email', flat=True))
     for email in email_list:
         distinct_emails = distinct_emails + str(email) + delim
 
-    email_list = list(Contact.objects.values_list('email', flat=True))
+    email_list = list(Contact.objects.filter(status=0).values_list('email', flat=True))
     for email in email_list:
         all_emails = all_emails + str(email) + delim
 
-    email_list = list(Contact.objects.exclude(departament__type=1).values_list('email', flat=True))
+    email_list = list(Contact.objects.filter(status=0).exclude(departament__type=1).values_list('email', flat=True))
     for email in email_list:
         all_ground_emails = all_ground_emails + str(email) + delim
 
@@ -84,7 +84,7 @@ def deps(request, *args, **kwargs):
         jdata['time'] = depart.region.timezone
         delim = ";"
         jdata['emails'] = ''
-        email_list = list(Contact.objects.filter(departament=depart).values_list('email', flat=True))
+        email_list = list(Contact.objects.filter(departament=depart, status=0).values_list('email', flat=True))
         for email in email_list:
             jdata['emails'] = jdata['emails'] + str(email) + delim
         # jdata['emails'] = list(Contact.objects.filter(departament=depart).values_list('email', flat=True))
@@ -99,6 +99,7 @@ def pers(request, *args, **kwargs):
     data = request.POST
     deps_id = data.get('query[CustomerID]')
     contacts = Contact.objects.filter(departament_id=deps_id)
+    contacts = contacts.order_by('job__position','rank__position', 'sur_name', 'name')
     limit = data.get('pagination[perpage]', 10)
     offset = data.get('pagination[page]', 0)
     count = contacts.count()
