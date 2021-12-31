@@ -10,6 +10,7 @@ class FedRegion(models.Model):
     class Meta:
         verbose_name = 'Федеральный округ'
         verbose_name_plural = 'Федеральные округи'
+        ordering = ['name', ]
 
 
 class Region(models.Model):
@@ -18,11 +19,12 @@ class Region(models.Model):
     timezone = models.IntegerField('Часовой пояс региона GMT', default=0, help_text='GMT')
 
     def __str__(self):
-        return str(self.name + " | " + str(self.timezone))
+        return str(self.name)
 
     class Meta:
         verbose_name = 'Регион'
         verbose_name_plural = 'Регионы'
+        ordering = ['name', ]
 
 
 class Job(models.Model):
@@ -31,7 +33,7 @@ class Job(models.Model):
     position = models.IntegerField('Порядковый номер')
 
     def __str__(self):
-        return str(self.full_name) + " | " + str(self.position)
+        return str(self.full_name)
 
     class Meta:
         verbose_name = 'Должность'
@@ -44,7 +46,7 @@ class Rank(models.Model):
     position = models.IntegerField('Порядковый номер')
 
     def __str__(self):
-        return str(self.full_name) + " | " + str(self.position)
+        return str(self.full_name)
 
     class Meta:
         verbose_name = 'Звание'

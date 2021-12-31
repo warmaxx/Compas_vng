@@ -14,7 +14,7 @@ class ContactAdmin(admin.ModelAdmin):
 class DepartamentAdmin(admin.ModelAdmin):
     list_display = ("name", "region", "address", "type", "position", "count_employees", )
     search_fields = ("name",)
-    list_filter = ("type",)
+    list_filter = ("type", "region")
     empty_value_display = "-пусто-"
 
 
