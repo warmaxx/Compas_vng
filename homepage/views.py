@@ -46,13 +46,13 @@ def index(request):
     count_pers_result = ''
     count_pers_result_percent = ''
     select_stat = 0
-    count_pers_work = Contact.objects.filter(status=0).count()
-    count_pers_ill = Contact.objects.filter(status=1).count()
-    count_pers_travel = Contact.objects.filter(status=2).count()
-    count_pers_holiday = Contact.objects.filter(status=3).count()
-    count_pers_pregnant = Contact.objects.filter(status=4).count()
-    count_pers_study = Contact.objects.filter(status=5).count()
-    count_pers_foreign = Contact.objects.filter(status=6).count()
+    count_pers_work = Contact.objects.filter(status=0).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_ill = Contact.objects.filter(status=1).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_travel = Contact.objects.filter(status=2).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_holiday = Contact.objects.filter(status=3).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_pregnant = Contact.objects.filter(status=4).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_study = Contact.objects.filter(status=5).filter(departament__type__in=(2, 3, 4)).count()
+    count_pers_foreign = Contact.objects.filter(status=6).filter(departament__type__in=(2, 3, 4)).count()
     count_deps_gk = Departament.objects.filter(type__in=(2, 3, 4)).count()
 
     count_deps_type_2 = Departament.objects.filter(type=2).count()
