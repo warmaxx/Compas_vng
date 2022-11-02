@@ -4,11 +4,19 @@ from homepage.models import Region
 
 class TekInfo(models.Model):
     region = models.OneToOneField(Region, on_delete=models.CASCADE, unique=True, verbose_name='Регион')
+    # Проверки ТЭК
+    tek_plan_check = models.IntegerField('ТЭК Количество плановых проверок', default=0)
+    tek_out_plan_check = models.IntegerField('ТЭК Количество внеплановых проверок', default=0)
+    tek_ls = models.IntegerField('ТЭК Количество задействованого л\с', default=0)
     # Направление ТЭК
     tek_high = models.IntegerField('Количество высоких')
     tek_mid = models.IntegerField('Количество средних')
     tek_low = models.IntegerField('Количество низких')
-    # Направление ВО
+    # Проверки подразделения охраны
+    vo_plan_check = models.IntegerField('ТЭК Количество плановых проверок', default=0)
+    vo_out_plan_check = models.IntegerField('ТЭК Количество внеплановых проверок', default=0)
+    vo_ls = models.IntegerField('ТЭК Количество задействованого л\с', default=0)
+    # Направление подразделение охраны (VO)
     vo_deps_foiv = models.IntegerField('Подразделения охраны - ФОИВ')
     vo_deps_ul = models.IntegerField('Подразделения охраны - организаций')
     vo_deps_ul_special = models.IntegerField('Подразделения охраны - ЮЛ с особыми уставными задачами')

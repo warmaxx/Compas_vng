@@ -2,7 +2,7 @@ from docxtpl import DocxTemplate
 from datetime import datetime, timedelta
 from django.http import FileResponse
 from django.shortcuts import render
-from Gastroler.settings import BASE_DIR
+from Compas.settings import BASE_DIR
 from report_result.models import Modul_1_1, Modul_1_2, Modul_3, Modul_4_1, Modul_4_2, Modul_5, Modul_6, Modul_7, Modul_8
 
 import os

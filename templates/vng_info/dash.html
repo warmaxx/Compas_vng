@@ -123,6 +123,90 @@
     <div class="card-body d-flex flex-column">
       <div class="bg-white flex-grow-1">
         <h5 class="card-title font-weight-bolder text-center">ТЭК:</h5>
+      <h6 class="card-title font-weight-bolder text-left">Информация о проверках на текущие сутки:</h6>
+      <div class="row row-cols-1">
+          <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps_all.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Всего
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.tek_plan_check|add:info.tek_out_plan_check}}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps_ul.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Плановые проверки
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.tek_plan_check }}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Внеплановые проверки
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.tek_out_plan_check }}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_pers_all.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Задействовано л/с
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.tek_ls }}</span>
+            </div>
+          </div>
+      </div>
+        <h6 class="card-title font-weight-bolder text-left">Объекты ТЭК по категориям</h6>
         <div class="row">
 
           <div class="col">
@@ -180,7 +264,91 @@
         <!--end::Row-->
         <!--begin::Row-->
         <div class="separator separator-solid separator-border-2 separator-primary pt-3"></div>
-        <h5 class="card-title font-weight-bolder text-center pt-5">ВО:</h5>
+        <h5 class="card-title font-weight-bolder text-center pt-5">Подразделения охраны:</h5>
+      <h6 class="card-title font-weight-bolder text-left">Информация о проверках на текущие сутки:</h6>
+      <div class="row row-cols-1">
+          <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps_all.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Всего
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_plan_check|add:info.vo_out_plan_check }}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps_ul.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Плановые проверки
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_plan_check }}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_deps.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Внеплановые проверки
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_out_plan_check }}</span>
+            </div>
+          </div>
+        <div class="col-12">
+            <div class="d-flex align-items-center flex-wrap mb-8">
+              <!--begin::Symbol-->
+              <div class="symbol symbol-50 symbol-light mr-5">
+														<span class="symbol-label">
+															<img src="{% static 'src/media/svg/icons/vng_info/vo_pers_all.svg' %}"
+                                   class="h-50 align-self-center" alt="">
+														</span>
+              </div>
+              <!--end::Symbol-->
+              <!--begin::Text-->
+              <div class="d-flex flex-column flex-grow-1 mr-2">
+                <div href="" class="font-weight-bold text-dark-75 text-hover-primary font-size-lg mb-1">Задействовано л/с
+                </div>
+{#                <span class="text-muted font-weight-bold">(всего)</span>#}
+              </div>
+              <!--end::Text-->
+              <span class="label label-xl label-light label-inline my-lg-0 my-2 text-dark-50 font-weight-bolder">{{ info.vo_ls }}</span>
+            </div>
+          </div>
+      </div>
+      <div class="separator separator-dashed separator-border-2 separator-primary pt-3"></div>
         <div class="row row-cols-1">
           <div class="col-12">
             <div class="d-flex align-items-center flex-wrap mb-8">

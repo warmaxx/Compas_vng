@@ -45,6 +45,7 @@ def index(request):
     count_pers_fact = ''
     count_pers_result = ''
     count_pers_result_percent = ''
+
     select_stat = 0
     count_pers_work = Contact.objects.filter(status=0).filter(departament__type__in=(2, 3, 4)).count()
     count_pers_ill = Contact.objects.filter(status=1).filter(departament__type__in=(2, 3, 4)).count()
@@ -85,6 +86,10 @@ def index(request):
                     vo_obj_vo=Sum('vo_obj_vo'), vo_obj_special=Sum('vo_obj_special'),
                     vo_guns_army=Sum('vo_guns_army'), vo_guns_work=Sum('vo_guns_work'),
                     vo_guns_civil=Sum('vo_guns_civil'), vo_guns_study=Sum('vo_guns_study'),
+                    tek_plan_check=Sum('tek_plan_check'), tek_out_plan_check=Sum('tek_out_plan_check'),
+                    tek_ls=Sum('tek_ls'), vo_plan_check=Sum('vo_plan_check'),
+                    vo_out_plan_check=Sum('vo_out_plan_check'),
+                    vo_ls=Sum('vo_ls'),
                 )
             if int(select_stat) == 2:
                 try:
@@ -100,6 +105,10 @@ def index(request):
                         vo_obj_vo=Sum('vo_obj_vo'), vo_obj_special=Sum('vo_obj_special'),
                         vo_guns_army=Sum('vo_guns_army'), vo_guns_work=Sum('vo_guns_work'),
                         vo_guns_civil=Sum('vo_guns_civil'), vo_guns_study=Sum('vo_guns_study'),
+                        tek_plan_check=Sum('tek_plan_check'), tek_out_plan_check=Sum('tek_out_plan_check'),
+                        tek_ls=Sum('tek_ls'), vo_plan_check=Sum('vo_plan_check'),
+                        vo_out_plan_check=Sum('vo_out_plan_check'),
+                        vo_ls=Sum('vo_ls'),
                     )
                 except Exception as e:
                     print(e)
