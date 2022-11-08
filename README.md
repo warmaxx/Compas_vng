@@ -1,4 +1,5 @@
-![example workflow](https://github.com/warmaxx/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+![compas workflow](https://github.com/warmaxx/Compas/actions/workflows/compas_workflow.yml/badge.svg)
+![](https://github.com/warmaxx/Compas/compas.gif)
 # Проект КОМПАС
 ### Система учета работы внутренней службы
 Проект копируется в ваш репозиторий и разворачивается на вашем сервере с помощью следующих технологий:
