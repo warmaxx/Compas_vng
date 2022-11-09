@@ -56,9 +56,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            pwd
-            ls
             sudo docker pull warmaxx/compas:latest
+            sudo pwd
+            sudo ls
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
