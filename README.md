@@ -1,5 +1,5 @@
 ![compas workflow](https://github.com/warmaxx/Compas/actions/workflows/compas_workflow.yml/badge.svg)
-![](https://github.com/warmaxx/Compas/compas.gif)
+![](https://github.com/warmaxx/Compas/blob/master/compas.gif?raw=true)
 # Проект КОМПАС
 ### Система учета работы внутренней службы
 Проект копируется в ваш репозиторий и разворачивается на вашем сервере с помощью следующих технологий:
@@ -32,7 +32,7 @@
 ### Добавить Secrets в свой репозиторий GitHub 
  - [ ] DB_ENGINE # django.db.backends.postgresql - указываем, что работаем с postgresql
  - [ ] DB_HOST # db - название сервиса (контейнера)
- - [ ] DB_NAME # postgres - имя базы данных
+ - [ ] DB_NAME # compas_db - имя базы данных
  - [ ] DB_PORT # 5432 - порт для подключения к БД 
  - [ ] DOCKER_USERNAME # Пользователь на hub.docker.com
  - [ ] DOCKER_PASSWORD # Пароль на hub.docker.com
