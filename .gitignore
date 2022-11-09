@@ -1,2 +1,11 @@
 /venv/
 /db.sqlite3
+/homepage/migrations/
+/news/migrations/
+/phonebook/migrations/
+/report_result/migrations/
+/vng_docs/migrations/
+/vng_incidents/migrations/
+/vng_info/migrations/
+/vng_stat/migrations/
+/.idea/
