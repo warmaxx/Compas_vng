@@ -41,7 +41,7 @@ jobs:
         - name: Push to Docker Hub
           uses: docker/build-push-action@v3
           with:
-            context: compas/
+#            context: compas/
             push: true
             tags: warmaxx/compas:latest
   deploy:
