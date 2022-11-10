@@ -34,6 +34,14 @@ ALLOWED_HOSTS = [
     '91.214.69.51'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'warmaxx.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost',
+    '[::1]',
+    '*',
+    '91.214.69.51'
+]
 # Application definition
 
 INSTALLED_APPS = [
