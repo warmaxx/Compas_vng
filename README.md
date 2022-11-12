@@ -44,7 +44,7 @@
 ### Добавить Secrets в свой репозиторий GitHub 
  - [ ] DB_ENGINE # django.db.backends.postgresql - указываем, что работаем с postgresql
  - [ ] DB_HOST # db - название сервиса (контейнера)
- - [ ] DB_NAME # compas_db - имя базы данных
+ - [ ] DB_NAME # compas - имя базы данных
  - [ ] DB_PORT # 5432 - порт для подключения к БД 
  - [ ] DOCKER_USERNAME # Пользователь на hub.docker.com
  - [ ] DOCKER_PASSWORD # Пароль на hub.docker.com
