@@ -59,13 +59,13 @@ def pers(request):
                         ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
                 except ZeroDivisionError:
                     count_pers_result_percent = 0
-                count_pers_work = Contact.objects.filter(status=0).count()
-                count_pers_ill = Contact.objects.filter(status=1).count()
-                count_pers_travel = Contact.objects.filter(status=2).count()
-                count_pers_holiday = Contact.objects.filter(status=3).count()
-                count_pers_pregnant = Contact.objects.filter(status=4).count()
-                count_pers_study = Contact.objects.filter(status=5).count()
-                count_pers_foreign = Contact.objects.filter(status=6).count()
+                count_pers_work = Contact.objects.filter(status=0).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_ill = Contact.objects.filter(status=1).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_travel = Contact.objects.filter(status=2).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_holiday = Contact.objects.filter(status=3).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_pregnant = Contact.objects.filter(status=4).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_study = Contact.objects.filter(status=5).filter(departament__type__in=(2, 3, 4)).count()
+                count_pers_foreign = Contact.objects.filter(status=6).filter(departament__type__in=(2, 3, 4)).count()
             if int(select_stat) == 2:
 
                 try:
@@ -97,19 +97,19 @@ def pers(request):
                     count_pers_result_percent = round(
                         ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
                     count_pers_work = Contact.objects.filter(status=0).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_ill = Contact.objects.filter(status=1).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_travel = Contact.objects.filter(status=2).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_holiday = Contact.objects.filter(status=3).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_pregnant = Contact.objects.filter(status=4).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_study = Contact.objects.filter(status=5).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_foreign = Contact.objects.filter(status=6).filter(
-                        departament__region__fedname_id=select_fed_region_id).count()
+                        departament__region__fedname_id=select_fed_region_id).filter(departament__type__in=(2, 3, 4)).count()
                 except Exception as e:
                     print(e)
                     info = ''
@@ -134,19 +134,19 @@ def pers(request):
                     count_pers_result_percent = round(
                         ((count_pers_plan - count_pers_fact) / count_pers_plan) * 100, 2)
                     count_pers_work = Contact.objects.filter(status=0).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_ill = Contact.objects.filter(status=1).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_travel = Contact.objects.filter(status=2).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_holiday = Contact.objects.filter(status=3).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_pregnant = Contact.objects.filter(status=4).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_study = Contact.objects.filter(status=5).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                     count_pers_foreign = Contact.objects.filter(status=6).filter(
-                        departament__region=select_region_id).count()
+                        departament__region=select_region_id).filter(departament__type__in=(2, 3, 4)).count()
                 except Exception as e:
                     info = ''
                     print(e)
