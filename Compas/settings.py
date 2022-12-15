@@ -36,8 +36,8 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://91.214.69.51',
-    'https://91.214.69.51'
+    'http://*',
+    'https://*'
 ]
 # Application definition
 
