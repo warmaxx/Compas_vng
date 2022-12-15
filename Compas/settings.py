@@ -37,7 +37,11 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'http://*',
-    'https://*'
+    'http://ugk.rosgvard.ru',
+    'http://gulrr-308-06.rosgvard.ru',
+    'https://*',
+    'https://ugk.rosgvard.ru',
+    'https://gulrr-308-06.rosgvard.ru',
 ]
 # Application definition
 
