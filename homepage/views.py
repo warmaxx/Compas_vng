@@ -17,7 +17,7 @@ def index(request):
     count_high = Tek_Object.objects.filter(category__name='Высокая').count()
     count_medium = Tek_Object.objects.filter(category__name='Средняя').count()
     count_low = Tek_Object.objects.filter(category__name='Низкая').count()
-    news = News.objects.filter(date_start__lte=now).filter(date_end__gte=now).order_by('id').reverse()
+    news = News.objects.filter(date_start__lte=now).filter(date_end__gte=now).order_by('date_create').reverse()
     regions = Region.objects.all().order_by('name')
     fed_regions = FedRegion.objects.all().order_by('name')
 
