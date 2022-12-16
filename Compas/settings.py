@@ -37,6 +37,8 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'http://*',
+    'http://localhost',
+    'http://91.214.69.51',
     'http://ugk.rosgvard.ru',
     'http://gulrr-308-06.rosgvard.ru',
     'https://*',
