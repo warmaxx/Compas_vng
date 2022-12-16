@@ -53,7 +53,7 @@ def incs(request, *args, **kwargs):
     limit = data.get('pagination[perpage]', 10)
     offset = data.get('pagination[page]', 0)
     incidents = Incident.objects.filter(Q(date_time__gte=date_start),
-                                        Q(date_time__lte=date_end + dt.timedelta(days=1))).order_by('-pk')
+                                        Q(date_time__lte=date_end + dt.timedelta(days=1))).order_by('-date_time')
     if len(region) > 0:
         incidents = incidents.filter(region_id=region)
     if len(inc_id) > 0:
