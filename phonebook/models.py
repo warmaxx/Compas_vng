@@ -30,7 +30,7 @@ class Departament(models.Model):
 
 
 class Contact(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, default=None)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
     sur_name = models.CharField('Фамилия', max_length=100, default='Заполнить Фамилию')
     name = models.CharField('Имя', max_length=100, default='Заполнить Имя')
     patronymic = models.CharField('Отчество', max_length=100, blank=True)
