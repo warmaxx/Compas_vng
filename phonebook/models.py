@@ -19,7 +19,7 @@ class Departament(models.Model):
     address = models.CharField('Адрес местонахождения отдела', max_length=100, blank=True)
     type = models.IntegerField('Тип подразделения', choices=DEPARTAMENT_TYPE)
     position = models.IntegerField('Порядковый номер', help_text='Чем меньше номер, тем выше в списке.')
-    count_employees = models.IntegerField('Количество по штату')
+    count_employees = models.IntegerField('Количество по штату', default=0)
 
     def __str__(self):
         return str(self.name) + " | " + str(self.region)
@@ -52,10 +52,10 @@ class Contact(models.Model):
         verbose_name_plural = 'Контакты'
 
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_user_contact(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Contact.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+def save_user_contact(sender, instance, **kwargs):
+    instance.contact.save()
