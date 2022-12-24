@@ -54,10 +54,10 @@ class Contact(models.Model):
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакты'
 
-@receiver(post_save, sender=User)
-def create_user_contact(sender, instance, created, **kwargs):
-    if created:
-        Contact.objects.create(user=instance)
+# @receiver(post_save, sender=User)
+# def create_user_contact(sender, instance, created, **kwargs):
+#     if created:
+#         Contact.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_contact(sender, instance, **kwargs):
