@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from homepage.models import Region, FedRegion, Job, Rank, STATUS_CONTACT_CHOICES
 
 
@@ -27,6 +30,7 @@ class Departament(models.Model):
 
 
 class Contact(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, blank=True)
     sur_name = models.CharField('Фамилия', max_length=100)
     name = models.CharField('Имя', max_length=100)
     patronymic = models.CharField('Отчество', max_length=100, blank=True)
@@ -47,3 +51,11 @@ class Contact(models.Model):
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакты'
 
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
