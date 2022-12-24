@@ -7,7 +7,7 @@ from .models import Contact, Rank, Job, Departament
 class ContactAdmin(admin.ModelAdmin):
     list_display = ("sur_name", "name", "patronymic", "departament", "job", "rank", "work_phone", "cell_phone", "email", "status")
     search_fields = ("sur_name","name",)
-    list_filter = ("job", "rank", "status")
+    list_filter = ("job", "rank", "status", "departament__name")
     empty_value_display = "-пусто-"
 
 
