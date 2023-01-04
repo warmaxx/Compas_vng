@@ -31,8 +31,8 @@ class Departament(models.Model):
 
 class Contact(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, default=None, blank=True)
-    sur_name = models.CharField('Фамилия', max_length=100, default='Заполнить Фамилию')
-    name = models.CharField('Имя', max_length=100, default='Заполнить Имя')
+    sur_name = models.CharField('Фамилия', max_length=100)
+    name = models.CharField('Имя', max_length=100)
     patronymic = models.CharField('Отчество', max_length=100, blank=True)
     departament = models.ForeignKey(Departament, on_delete=models.PROTECT, verbose_name='Отдел', null=True, default=None)
     job = models.ForeignKey(Job, on_delete=models.PROTECT, verbose_name='Должность', null=True, default=None)
